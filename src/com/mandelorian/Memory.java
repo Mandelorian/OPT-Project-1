@@ -25,16 +25,64 @@ public class Memory {
     // Add here the categories
     public static void setDefaultCategories() {
         // categorieList.add(new Categorie("Example"));
+        categorieList.add(new Categorie("Grote boten"));
+        categorieList.add(new Categorie("Middelgrote boten"));
+        categorieList.add(new Categorie("Kleiner boten"));
     }
 
     // Add here all the different types of boats
     public static void setDefaultBoatList() {
         // boatList.add(new Boat("Example", getCategorie("ExampleCategorie")));
+
+        //grote boten
+        boatList.add(new Boat("Jacht", getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Cruise schip", getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Containerschip", getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Tanker", getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Veerboot", getCategorieByName("Grote boten")));
+
+        //middelgrote boten
+        boatList.add(new Boat("Speedboot ", getCategorieByName("Middelgrote boten")));
+        boatList.add(new Boat("Vissersboot", getCategorieByName("Middelgrote boten")));
+        boatList.add(new Boat("Pontonboot", getCategorieByName("Middelgrote boten")));
+        boatList.add(new Boat("Sleepboot", getCategorieByName("Middelgrote boten")));
+        boatList.add(new Boat("Motorjacht", getCategorieByName("Middelgrote boten")));
+
+        //Kleine boten
+        boatList.add(new Boat("Kano", getCategorieByName("Kleine boten")));
+        boatList.add(new Boat("Kayak", getCategorieByName("Kleine boten")));
+        boatList.add(new Boat("Roeiboot", getCategorieByName("Kleine boten")));
+        boatList.add(new Boat("Zeilbootje", getCategorieByName("Kleine boten")));
+
+
     }
 
     // set here all the options
     public static void setDefaultOptionList() {
         // optionList.add(new Option("Example", "description"));
+
+        String[] boten = {"Jacht", "Cruise schip", "Containerschip", "Tanker", "Veerboot", "Speedboot", "Vissersboot", "Pontonboot", "Sleepboot", "Motorjacht", "Kano", "Kayak", "Roeiboot", "Zeilbootje"};
+        String[][] botenOpties = {{"Airconditioning", "jacuzzi", "helikopterplatform", "sauna", "bioscoop"}, };
+
+
+
+        for(int i=0; i<botenOpties.length; i++) {
+            for(int j=0; i<botenOpties[i].length; i++) {
+                optionList.add(new Option(botenOpties[i][j], null, getBoatByName(boten[i])));
+            }
+        }
+
+        //opties voor jacht
+        optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));
+        optionList.add(new Option("helikopterplatform", null, getBoatByName("Jacht")));
+        optionList.add(new Option("sauna", null, getBoatByName("Jacht")));
+        optionList.add(new Option("bioscoop", null, getBoatByName("Jacht")));
+
+        //opties voor cruise schip
+        optionList.add(new Option("Zwembad", null, getBoatByName("Cruise schip ")));
+
+
+
     }
 
     // Set here the pricelist
