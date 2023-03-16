@@ -20,6 +20,7 @@ public class Memory {
     public static List<Categorie> getCategorieList() {return categorieList;}
     public static HashMap<Item, Double> getPriceList() {return priceList;}
     public static List<Boat> getBoatList() {return boatList;}
+    public static List<Option> getOptionList() {return optionList;}
 
     // Add here the categories
     public static void setDefaultCategories() {
@@ -66,7 +67,7 @@ public class Memory {
         return option;
     }
 
-    public static Categorie getCategorie(String name) {
+    public static Categorie getCategorieByName(String name) {
         Categorie categorie = null;
 
         for(Categorie cc : categorieList) {
