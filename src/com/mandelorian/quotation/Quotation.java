@@ -1,6 +1,6 @@
 package com.mandelorian.quotation;
 
-import com.mandelorian.Saved;
+import com.mandelorian.Memory;
 import com.mandelorian.boat.Boat;
 import com.mandelorian.boat.Item;
 import com.mandelorian.boat.Option;
@@ -29,17 +29,17 @@ public class Quotation {
     public void removeOption(int index) {this.optionList.remove(index);}
 
     public double getTotalPrice() {
-        double total = ((boat == null) ? 0 : Saved.getPriceList().get(boat));
+        double total = ((boat == null) ? 0 : Memory.getPriceList().get(boat));
 
         for(Option currentOption : optionList) {
-            total += Saved.getPriceList().get(currentOption);
+            total += Memory.getPriceList().get(currentOption);
         }
 
         return  total;
     }
 
     public double getPrice(Item item) {
-        return Saved.getPriceList().get(item);
+        return Memory.getPriceList().get(item);
     }
 
 }

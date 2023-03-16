@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Saved {
+public class Memory {
 
 
     private static List<Categorie> categorieList = new ArrayList<>();
