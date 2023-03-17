@@ -44,5 +44,6 @@ class Program {
 
     public void start() {
         System.out.println("Starting program.");
+        System.out.println(Memory.getOptionList().get(16).getName());
     }
 }

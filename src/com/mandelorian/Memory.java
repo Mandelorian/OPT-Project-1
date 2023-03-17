@@ -62,24 +62,35 @@ public class Memory {
         // optionList.add(new Option("Example", "description"));
 
         String[] boten = {"Jacht", "Cruise schip", "Containerschip", "Tanker", "Veerboot", "Speedboot", "Vissersboot", "Pontonboot", "Sleepboot", "Motorjacht", "Kano", "Kayak", "Roeiboot", "Zeilbootje"};
-        String[][] botenOpties = {{"Airconditioning", "jacuzzi", "helikopterplatform", "sauna", "bioscoop"}, };
+        String[][] botenOpties = {
+                {"Airconditioning", "jacuzzi", "helikopterplatform", "sauna", "bioscoop"},
+                {"zwembad", "spa", "theater", "casino", "fitnessruimte"},
+                {"meer laadvermogen", "meer container capaciteit"},
+                {"extra tankcapaciteit", "meer laadpompen", "extra geavanceerd brandblusinstallatie"},
+                {"meer passagierscapaciteit", "auto- en vrachtcapaciteit", "entertainment voorzieningen"},
+                {"krachtigere motor", "audio systeem", "GPS-navigatie"},
+                {"kraan", "navigatie-apparatuur", "koelopslag"},
+                {"ligstoelen", "tafels", "audio systeem", "barbeque"},
+                {"sleephaken", "boegschroef", "navigatie-verlichting"},
+                {"keukenapparatuur", "airconditioning", "navigatie-apparatuur"},
+                {"extra peddels", "extra zitplaatsen", "waterdichte opbergvakken"},
+                {"extra peddels", "extra zitplaatsen", "waterdichte opbergvakken"},
+                {"roer", "extra peddels", "extra zitplaatsen"},
+                {"extra zeilen", "navigatie-verlichting", "noodmotor"}
+        };
 
 
-
+        System.out.println(botenOpties.length);
         for(int i=0; i<botenOpties.length; i++) {
-            for(int j=0; i<botenOpties[i].length; i++) {
+            for(int j=0; j<botenOpties[i].length; j++) {
                 optionList.add(new Option(botenOpties[i][j], null, getBoatByName(boten[i])));
             }
         }
 
-        //opties voor jacht
-        optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));
-        optionList.add(new Option("helikopterplatform", null, getBoatByName("Jacht")));
-        optionList.add(new Option("sauna", null, getBoatByName("Jacht")));
-        optionList.add(new Option("bioscoop", null, getBoatByName("Jacht")));
 
-        //opties voor cruise schip
-        optionList.add(new Option("Zwembad", null, getBoatByName("Cruise schip ")));
+        //opties voor jacht
+        //optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));
+
 
 
 
