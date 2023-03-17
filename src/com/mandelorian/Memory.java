@@ -63,24 +63,24 @@ public class Memory {
 
         String[] boten = {"Jacht", "Cruise schip", "Containerschip", "Tanker", "Veerboot", "Speedboot", "Vissersboot", "Pontonboot", "Sleepboot", "Motorjacht", "Kano", "Kayak", "Roeiboot", "Zeilbootje"};
         String[][] botenOpties = {
-                {"Airconditioning", "jacuzzi", "helikopterplatform", "sauna", "bioscoop"},
+                {"Airconditioning-jacht", "jacuzzi", "helikopterplatform", "sauna", "bioscoop"},
                 {"zwembad", "spa", "theater", "casino", "fitnessruimte"},
-                {"meer laadvermogen", "meer container capaciteit"},
+                {"meer laadvermogen", "meer container capaciteit", "nieuwste professionele navigatieapparatuur"},
                 {"extra tankcapaciteit", "meer laadpompen", "extra geavanceerd brandblusinstallatie"},
                 {"meer passagierscapaciteit", "auto- en vrachtcapaciteit", "entertainment voorzieningen"},
                 {"krachtigere motor", "audio systeem", "GPS-navigatie"},
                 {"kraan", "navigatie-apparatuur", "koelopslag"},
                 {"ligstoelen", "tafels", "audio systeem", "barbeque"},
                 {"sleephaken", "boegschroef", "navigatie-verlichting"},
-                {"keukenapparatuur", "airconditioning", "navigatie-apparatuur"},
-                {"extra peddels", "extra zitplaatsen", "waterdichte opbergvakken"},
-                {"extra peddels", "extra zitplaatsen", "waterdichte opbergvakken"},
+                {"keukenapparatuur", "airconditioning-motorjacht", "navigatie-apparatuur"},
+                {"extra peddels kano", "extra zitplaatsen kano", "waterdichte opbergvakken kano"},
+                {"extra peddels kayak", "extra zitplaatsen kayak", "waterdichte opbergvakken kayak"},
                 {"roer", "extra peddels", "extra zitplaatsen"},
                 {"extra zeilen", "navigatie-verlichting", "noodmotor"}
         };
 
 
-        System.out.println(botenOpties.length);
+
         for(int i=0; i<botenOpties.length; i++) {
             for(int j=0; j<botenOpties[i].length; j++) {
                 optionList.add(new Option(botenOpties[i][j], null, getBoatByName(boten[i])));
@@ -100,6 +100,55 @@ public class Memory {
     public static void setDefaultPriceList() {
         //priceList.put(getBoatByName("Example"), 100.0);
         // priceList.put(getOptionByName("Example"), 100.0);
+        double[] prijzenBoot = {
+                48000000, 900000000, 180000000, 400_000_000,
+                20_000_000, 500_000_000, 1_000_000, 1_500_000,
+                1_500_000, 3_000_000, 500, 700, 1000, 5000
+        };
+        int i=0;
+        for(Boat boat : boatList) {
+            priceList.put(boat, prijzenBoot[i]);
+            i++;
+        }
+        i=0;
+        double[] prijzenOptie = {
+                //Jacht opties
+                500_000,200_000,1_500_000, 100_000, 350_000,
+                //Cruise schip opties
+                10_000_000, 35_000_000, 4_000_000, 68_000_000, 5_000_000,
+                //Containerschip opties
+                48_000_000, 80_000_000, 4_800_000,
+                //Tanker
+                40_000_000, 10_000_000, 4_000_000,
+                //Veerboot
+                2_000_000, 3_000_000, 1_000_000,
+
+                //Speedboot opties
+                50_000, 10_000, 5000,
+                //Visserboot opties
+                50_000, 20_000, 30_000,
+                //Pontonboot
+                5000, 2000, 10_000, 3000,
+                //Sleepboot
+                100_000, 50_000, 10_000,
+                //Motorjacht
+                50_000, 100_000, 20_000,
+
+                //kano opties
+                50, 20, 10,
+                //Kayak
+                50, 20, 10,
+                //Roeiboot
+                50, 50, 20,
+                //Zeilbootje
+                500, 100, 1000
+        };
+
+        for(Option option : optionList) {
+            priceList.put(option, prijzenOptie[i]);
+            i++;
+        }
+
     }
 
     public static Boat getBoatByName(String name) {
