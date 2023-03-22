@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c518f12-8889-4911-b858-f67d70fb8717" name="Changes" comment="Renamed Saved.java to Memory.java">
+    <list default="true" id="4c518f12-8889-4911-b858-f67d70fb8717" name="Changes" comment="Alle extra opties toegevoegd en foutje met het invoeren van de opties opgelost.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mandelorian/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mandelorian/Main.java" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/src/com/mandelorian/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mandelorian/Memory.java" afterDir="false" />
+
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +36,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason/IdeaProjects/week2_deel2_opd6&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -44,8 +63,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
+
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.mandelorian.Main" />
@@ -87,7 +107,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678973189337</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="lijst met catogorieen en boten en extra opties toegevoegd">
+      <created>1678981600374</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678981600374</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Alle extra opties toegevoegd en foutje met het invoeren van de opties opgelost.">
+      <created>1679071383781</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679071383781</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +142,8 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Basics for Java program and uml class" />
     <MESSAGE value="Renamed Saved.java to Memory.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed Saved.java to Memory.java" />
+    <MESSAGE value="lijst met catogorieen en boten en extra opties toegevoegd" />
+    <MESSAGE value="Alle extra opties toegevoegd en foutje met het invoeren van de opties opgelost." />
+    <option name="LAST_COMMIT_MESSAGE" value="Alle extra opties toegevoegd en foutje met het invoeren van de opties opgelost." />
   </component>
 </project>
