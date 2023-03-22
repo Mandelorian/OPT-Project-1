@@ -1,6 +1,6 @@
 package com.mandelorian;
 
-import com.mandelorian.boat.*;
+import com.mandelorian.boat.Boat;
 import com.mandelorian.quotation.Quotation;
 
 import java.util.ArrayList;
@@ -24,21 +24,21 @@ public class Main {
 
 class Program {
     private List<Quotation> quotationList;
-    private Quotation currentQuatation;
+    private Quotation currentQuotation;
 
     public Program() {
         this.quotationList = new ArrayList<>();
     }
 
-    public void createNewQuatation(Boat boat) {
+    public void createNewQuotation(Boat boat) {
         this.quotationList.add(new Quotation(boat));
     }
-    public void createNewQuatation(String boatName) {
+    public void createNewQuotation(String boatName) {
         this.quotationList.add(new Quotation(Memory.getBoatByName(boatName)));
     }
 
-    public void setCurrentQuatation(Quotation quatation) {
-        this.currentQuatation = quatation;
+    public void setCurrentQuotation(Quotation quotation) {
+        this.currentQuotation = quotation;
     }
 
 

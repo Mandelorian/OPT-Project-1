@@ -7,7 +7,10 @@
     <list default="true" id="4c518f12-8889-4911-b858-f67d70fb8717" name="Changes" comment="Alle extra opties toegevoegd en foutje met het invoeren van de opties opgelost.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mandelorian/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mandelorian/Main.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/com/mandelorian/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mandelorian/Memory.java" afterDir="false" />
+
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +36,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -46,6 +50,20 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/aiken/Documents/GitHub/OPT-Project-1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+
   }
 }</component>
   <component name="RunManager">
@@ -66,6 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678965931103</updated>
       <workItem from="1678965932232" duration="7858000" />
+      <workItem from="1678975466206" duration="1071000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1678966097659</created>
@@ -107,6 +126,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
