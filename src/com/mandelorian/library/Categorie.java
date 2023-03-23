@@ -1,4 +1,4 @@
-package com.mandelorian.product;
+package com.mandelorian.library;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.mandelorian;
 
+import com.mandelorian.library.Categorie;
 import com.mandelorian.product.Boat;
 import com.mandelorian.library.Utility;
-import com.mandelorian.product.Categorie;
 import com.mandelorian.product.ProductList;
 import com.mandelorian.quotation.Quotation;
 

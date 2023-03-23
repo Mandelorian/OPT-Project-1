@@ -1,7 +1,6 @@
 package com.mandelorian.library;
 
 import com.mandelorian.product.Boat;
-import com.mandelorian.product.Categorie;
 import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
 
