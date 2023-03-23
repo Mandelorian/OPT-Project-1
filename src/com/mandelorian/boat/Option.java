@@ -3,8 +3,8 @@ package com.mandelorian.boat;
 public class Option extends Item {
     private String description;
 
-    public Option(String name, String description, Boat boatByName) {
-        super(name);
+    public Option(String name, double price, String description, Boat boatByName) {
+        super(name, price);
         this.description = description;
     }
 
