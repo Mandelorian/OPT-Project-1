@@ -1,6 +1,6 @@
-package com.mandelorian.boat;
+package com.mandelorian.product;
 
-public class Option extends Item {
+public class Option extends Product {
     private String description;
 
     public Option(String name, double price, String description, Boat boatByName) {

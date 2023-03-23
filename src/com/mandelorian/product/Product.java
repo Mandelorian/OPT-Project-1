@@ -1,11 +1,11 @@
-package com.mandelorian.boat;
+package com.mandelorian.product;
 
-public class Item {
+public class Product {
 
     private String name;
     private double price;
 
-    public Item(String name, double price) {
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
     }

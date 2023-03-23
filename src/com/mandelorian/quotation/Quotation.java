@@ -1,10 +1,14 @@
 package com.mandelorian.quotation;
 
-import com.mandelorian.boat.Boat;
-import com.mandelorian.boat.Item;
-import com.mandelorian.boat.Option;
-import com.mandelorian.library.Library;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mandelorian.product.Boat;
+import com.mandelorian.product.Option;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 

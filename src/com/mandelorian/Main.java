@@ -1,9 +1,9 @@
 package com.mandelorian;
 
-import com.mandelorian.boat.Boat;
-import com.mandelorian.library.Library;
-import com.mandelorian.library.SavedFiles;
+import com.mandelorian.product.Boat;
 import com.mandelorian.library.Utility;
+import com.mandelorian.product.Categorie;
+import com.mandelorian.product.ProductList;
 import com.mandelorian.quotation.Quotation;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Library.setDefaultCategories();
-        Library.setDefaultOptionList();
-        Library.setDefaultBoatList();
+        Categorie.setDefaultCategories();
+        ProductList.setDefaultOptionList();
+        ProductList.setDefaultBoatList();
 
         Program program = new Program();
         program.start();
@@ -45,8 +45,8 @@ class Program {
         System.out.println("----------------------------------------");
 
         Boat boat = null;
-        for(int i = 0; i < Library.getBoatList().size(); i++) {
-            System.out.println((i + 1) + ". " + Library.getBoatList().get(i).getName());
+        for(int i = 0; i < ProductList.getBoatList().size(); i++) {
+            System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
         }
 
         System.out.println("----------------------------------------");
@@ -58,15 +58,15 @@ class Program {
             int boatNumber = scanner.nextInt();
             System.out.println();
 
-            if(boatNumber >= Library.getBoatList().size() || Library.getBoatList().get((boatNumber - 1)) == null) {
+            if(boatNumber >= ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
 
-            boat = Library.getBoatList().get((boatNumber - 1));
+            boat = ProductList.getBoatList().get((boatNumber - 1));
         }
 
-        this.clearScreen();
+        Utility.clearScreen();
         this.setCurrentQuotation(this.createNewQuotation(boat));
     }
 
@@ -93,9 +93,5 @@ class Program {
         this.currentQuotation = quotation;
     }
 
-    public void clearScreen() {
-        for (int i = 0; i < 200; i++) {System.out.println();}
-        System.out.println("\033[H\033[2J");
-        System.out.flush();
-    }
+
 }

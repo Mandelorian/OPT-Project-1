@@ -1,32 +1,22 @@
-package com.mandelorian.library;
+package com.mandelorian.product;
 
-import com.mandelorian.boat.Boat;
-import com.mandelorian.boat.Categorie;
-import com.mandelorian.boat.Item;
-import com.mandelorian.boat.Option;
+import com.mandelorian.library.Utility;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class Library {
+public class ProductList {
 
 
-    private static List<Categorie> categorieList = new ArrayList<>();
     private static List<Boat> boatList = new ArrayList<>();
     private static List<Option> optionList = new ArrayList<>();
 
-    public static List<Categorie> getCategorieList() {return categorieList;}
+
     public static List<Boat> getBoatList() {return boatList;}
     public static List<Option> getOptionList() {return optionList;}
 
     // Add here the categories
-    public static void setDefaultCategories() {
-        // categorieList.add(new Categorie("Example"));
-        categorieList.add(new Categorie("Grote boten"));
-        categorieList.add(new Categorie("Middelgrote boten"));
-        categorieList.add(new Categorie("Kleiner boten"));
-    }
+
 
     // Add here all the different types of boats
     public static void setDefaultBoatList() {
@@ -95,35 +85,34 @@ public class Library {
         optionList.add(new Option("navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Vissersboot")));
         optionList.add(new Option("koelopslag", 30_000,null, Utility.getBoatByName("Vissersboot")));
 
-        String[] boten = {"", "Vissersboot", "Pontonboot", "Sleepboot", "Motorjacht", "Kano", "Kayak", "Roeiboot", "Zeilbootje"};
-        String[][] botenOpties = {
-                {"ligstoelen", "tafels", "audio systeem", "barbeque"},
-                {"sleephaken", "boegschroef", "navigatie-verlichting"},
-                {"keukenapparatuur", "airconditioning-motorjacht", "navigatie-apparatuur"},
-                {"extra peddels kano", "extra zitplaatsen kano", "waterdichte opbergvakken kano"},
-                {"extra peddels kayak", "extra zitplaatsen kayak", "waterdichte opbergvakken kayak"},
-                {"roer", "extra peddels", "extra zitplaatsen"},
-                {"extra zeilen", "navigatie-verlichting", "noodmotor"}
-        };
+        optionList.add(new Option("ligstoelen", 5000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("tafels", 2000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("audio systeem", 10_000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("barbeque", 3000,null, Utility.getBoatByName("Pontonboot")));
 
-        double[] prijzenOptie = {
-                //Pontonboot
-                5000, 2000, 10_000, 3000,
-                //Sleepboot
-                100_000, 50_000, 10_000,
-                //Motorjacht
-                50_000, 100_000, 20_000,
+        optionList.add(new Option("sleephaken", 100_000,null, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("boegschroef", 50_000,null, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("navigatie-verlichting", 10_000,null, Utility.getBoatByName("Sleepboot")));
 
-                //kano opties
-                50, 20, 10,
-                //Kayak
-                50, 20, 10,
-                //Roeiboot
-                50, 50, 20,
-                //Zeilbootje
-                500, 100, 1000
-        };
+        optionList.add(new Option("keukenapparatuur", 50_000,null, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("airconditioning-motorjacht", 100_000,null, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Motorjacht")));
 
+        optionList.add(new Option("extra peddels kano", 50,null, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("extra zitplaatsen kano", 20,null, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("waterdichte opbergvakken kano", 10,null, Utility.getBoatByName("Kano")));
+
+        optionList.add(new Option("extra peddels kayak", 50,null, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("extra zitplaatsen kayak", 20,null, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("waterdichte opbergvakken kayak", 10,null, Utility.getBoatByName("Kayak")));
+
+        optionList.add(new Option("roer", 50,null, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("extra peddels", 50,null, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("extra zitplaatsen", 20,null, Utility.getBoatByName("Roeiboot")));
+
+        optionList.add(new Option("extra zeilen", 500,null, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("navigatie-verlichting", 100,null, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("noodmotor", 1000,null, Utility.getBoatByName("Zeilbootje")));
 
         //opties voor jacht
         //optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));

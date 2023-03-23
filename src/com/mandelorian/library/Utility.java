@@ -1,15 +1,16 @@
 package com.mandelorian.library;
 
-import com.mandelorian.boat.Boat;
-import com.mandelorian.boat.Categorie;
-import com.mandelorian.boat.Option;
+import com.mandelorian.product.Boat;
+import com.mandelorian.product.Categorie;
+import com.mandelorian.product.Option;
+import com.mandelorian.product.ProductList;
 
 public class Utility {
 
     public static Boat getBoatByName(String name) {
         Boat boat = null;
 
-        for(Boat cb : Library.getBoatList()) {
+        for(Boat cb : ProductList.getBoatList()) {
             if(!cb.getName().equalsIgnoreCase(name)) continue;
             boat = cb;
             break;
@@ -21,7 +22,7 @@ public class Utility {
     public static Option getOptionByName(String name) {
         Option option = null;
 
-        for(Option co : Library.getOptionList()) {
+        for(Option co : ProductList.getOptionList()) {
             if(!co.getName().equalsIgnoreCase(name)) continue;
             option = co;
             break;
@@ -33,12 +34,18 @@ public class Utility {
     public static Categorie getCategorieByName(String name) {
         Categorie categorie = null;
 
-        for(Categorie cc : Library.getCategorieList()) {
+        for(Categorie cc : Categorie.getCategorieList()) {
             if(!cc.getName().equalsIgnoreCase(name)) continue;
             categorie = cc;
             break;
         }
 
         return categorie;
+    }
+
+    public static void clearScreen() {
+        for (int i = 0; i < 200; i++) {System.out.println();}
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
     }
 }
