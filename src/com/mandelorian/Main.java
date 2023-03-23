@@ -3,6 +3,7 @@ package com.mandelorian;
 import com.mandelorian.boat.Boat;
 import com.mandelorian.quotation.Quotation;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -78,13 +79,13 @@ class Program {
         System.out.println("----------------------------------------");
 
         System.out.println();
-
+        //Print de bootlijst
         while (boat == null) {
             System.out.print("Kies de bootnummer van de boot die je wil: ");
             int boatNumber = scanner.nextInt();
             System.out.println();
 
-            if(boatNumber >= Memory.getBoatList().size() || Memory.getBoatList().get((boatNumber - 1)) == null) {
+            if (boatNumber >= Memory.getBoatList().size() || Memory.getBoatList().get((boatNumber - 1)) == null) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
@@ -94,5 +95,7 @@ class Program {
 
         this.clearScreen();
         this.setCurrentQuotation(this.createNewQuotation(boat));
+        //Print de gekozen boot
+        System.out.println("U hebt gekozen voor bootnummer: " + currentQuotation.getBoat().getName());
     }
 }
