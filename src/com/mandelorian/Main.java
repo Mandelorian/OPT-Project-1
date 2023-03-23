@@ -32,11 +32,18 @@ class Program {
         this.quotationList = new ArrayList<>();
     }
 
-    public void createNewQuotation(Boat boat) {
-        this.quotationList.add(new Quotation(boat));
+    public Quotation createNewQuotation(Boat boat) {
+        if(boat == null) return null;
+        Quotation quotation = new Quotation(boat);
+        this.quotationList.add(quotation);
+        return quotation;
     }
-    public void createNewQuotation(String boatName) {
-        this.quotationList.add(new Quotation(Memory.getBoatByName(boatName)));
+    public Quotation createNewQuotation(String boatName) {
+        if(boatName == null) return null;
+        Quotation quotation = new Quotation(Memory.getBoatByName(boatName));
+        if(quotation == null) return null;
+        this.quotationList.add(quotation);
+        return quotation;
     }
 
     public void setCurrentQuotation(Quotation quotation) {
@@ -86,8 +93,6 @@ class Program {
         }
 
         this.clearScreen();
-
-        Quotation quotation = this.createNewQuotation();
-        this.setCurrentQuotation(quotation);
+        this.setCurrentQuotation(this.createNewQuotation(boat));
     }
 }
