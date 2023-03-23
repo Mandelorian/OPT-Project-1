@@ -1,5 +1,7 @@
 package com.mandelorian.product;
 
+import com.mandelorian.library.Categorie;
+
 public class Boat extends Product {
 
     private Categorie categorie;
