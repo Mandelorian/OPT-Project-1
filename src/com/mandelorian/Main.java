@@ -96,6 +96,6 @@ class Program {
         this.clearScreen();
         this.setCurrentQuotation(this.createNewQuotation(boat));
         //Print de gekozen boot
-        System.out.println("U hebt gekozen voor bootnummer: " + currentQuotation.getBoat().getName());
+        System.out.println("U heeft gekozen voor bootnummer: " + currentQuotation.getBoat().getName());
     }
 }
