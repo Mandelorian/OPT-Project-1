@@ -11,7 +11,7 @@ public class Categorie {
         // categorieList.add(new Categorie("Example"));
         categorieList.add(new Categorie("Grote boten"));
         categorieList.add(new Categorie("Middelgrote boten"));
-        categorieList.add(new Categorie("Kleiner boten"));
+        categorieList.add(new Categorie("Kleine boten"));
     }
 
 

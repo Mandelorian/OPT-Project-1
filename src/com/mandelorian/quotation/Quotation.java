@@ -34,10 +34,11 @@ public class Quotation {
 
     public double getTotalPrice() {
         double total = ((boat == null) ? 0 : boat.getPrice());
-
+        System.out.println("boat"+boat.getPrice());
         for(Option currentOption : optionList) {
             total += currentOption.getPrice();
         }
+        System.out.println("total"+total);
         return  total;
     }
 
