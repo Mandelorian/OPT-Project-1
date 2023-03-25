@@ -1,10 +1,14 @@
 package com.mandelorian.quotation;
 
-import com.mandelorian.Memory;
-import com.mandelorian.boat.Boat;
-import com.mandelorian.boat.Item;
-import com.mandelorian.boat.Option;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mandelorian.product.Boat;
+import com.mandelorian.product.Option;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +33,12 @@ public class Quotation {
     public void removeOption(int index) {this.optionList.remove(index);}
 
     public double getTotalPrice() {
-        double total = ((boat == null) ? 0 : Memory.getPriceList().get(boat));
+        double total = ((boat == null) ? 0 : boat.getPrice());
 
         for(Option currentOption : optionList) {
-            total += Memory.getPriceList().get(currentOption);
+            total += currentOption.getPrice();
         }
-
         return  total;
-    }
-
-    public double getPrice(Item item) {
-        return Memory.getPriceList().get(item);
     }
 
 }
