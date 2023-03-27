@@ -9,4 +9,5 @@ A project for the class OPT 2.
   - **Java**
 
 ## UML Class
-![uml diagram](https://user-images.githubusercontent.com/71024003/225643232-91b30be5-377a-46ce-ae6b-18916e21c655.jpg)
+
+![UML Diagram - Page 1](https://user-images.githubusercontent.com/71024003/227873108-babbd187-956d-4a3c-b72e-3e8b2b970d60.png)
