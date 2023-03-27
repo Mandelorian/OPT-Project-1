@@ -27,6 +27,16 @@ public class Quotation {
     public Boat getBoat() {return this.boat;}
     public List<Option> getOptionList() {return this.optionList;}
 
+    public String optionListAsString() {
+        String s = "";
+
+        for (Option option : optionList) {
+            s += (s == null || s.isBlank() || s.isEmpty()) ? s + option.getName() : s + "," + option.getName();
+        }
+
+        return s;
+    }
+
     public void setBoat(Boat boat) {this.boat = boat;}
     public void addOption(Option option) {this.optionList.add(option);}
     public void removeOption(Option option) {this.optionList.remove(option);}
@@ -36,6 +46,7 @@ public class Quotation {
         double total = ((boat == null) ? 0 : boat.getPrice());
 
         for(Option currentOption : optionList) {
+            if(currentOption == null) continue;
             total += currentOption.getPrice();
         }
 
