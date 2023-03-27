@@ -109,7 +109,7 @@ class Program {
                     System.out.println("De optie met dit nummer bestaat niet.");
                     continue;
                 }
-                currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));;
+                currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));
         }
 
 
@@ -122,6 +122,12 @@ class Program {
         System.out.println();
 
         System.out.printf("Totaal price: €" + "%.2f", currentQuotation.getTotalPrice());
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        printCurrentQuotation();
     }
 
 
@@ -148,6 +154,59 @@ class Program {
     }
 
 
+    public void printCurrentQuotation() {
+
+        int rows = 85;
+        for (int c = 1; c <= rows; c++) {
+            System.out.print("*");
+        }
+        System.out.println("");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "SHIPFLEX", "", "OFFERTE");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "Blauw-roodlaan 286", "", "");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "2718 SK Zoetermeer ", "", "");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "088 - 42 42 042", "", "");
+        System.out.print("*  ");
+        System.out.println();
+        //hier moeten nog de echte klant naam en het echte factuur adres worden ingevuld
+        //maar die hebben we nu nog niet
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "KLANT", "", "FACTUUR ADRES");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "Naam", "", "Naam");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "Bedrijfsnaam", "", "Bedrijfsnaam");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "Straat", "", "Straat");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "postcode, stad", "", "postcode, stad");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "email", "", "email");
+        int rows2 = 84;
+        for (int c = 1; c <= rows2; c++) {
+            System.out.print("*");
+        }
+        System.out.println("*");
+        System.out.print("*  ");
+        System.out.printf("%-30s %-30s %-30s\n", "Boot", currentQuotation.getBoat().getName(), currentQuotation.getBoat().getPrice());
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+
+            System.out.print("*  ");
+            System.out.printf("%-30s %-30s %-30s\n", "optie", currentQuotation.getOptionList().get(i).getName(), currentQuotation.getOptionList().get(i).getPrice());
+
+        }
+
+        System.out.printf("%-30s %-30s %-30s\n", "*", "   Totaal:", "   "+currentQuotation.getTotalPrice());
+        for (int c = 1; c <= rows; c++) {
+            System.out.print("*");
+        }
+
+
+    }
 
 
 }
