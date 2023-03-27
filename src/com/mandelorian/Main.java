@@ -51,9 +51,7 @@ class Program {
         for(int i = 0; i < ProductList.getBoatList().size(); i++) {
             System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
         }
-
         System.out.println("———————————————————————————————————————————————————");
-
         System.out.println();
 
         while (boat == null) {
@@ -61,7 +59,7 @@ class Program {
             int boatNumber = scanner.nextInt();
             System.out.println();
 
-            if(boatNumber >= ProductList.getBoatList().size()) {
+            if(boatNumber > ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
@@ -80,13 +78,12 @@ class Program {
         System.out.println("                     Optie lijst                   ");
         System.out.println("———————————————————————————————————————————————————");
 
-
-        for(int i = 0; i < ProductList.getOptionList().size(); i++) {
-
-           if (ProductList.getOptionList().get(i).getBoat().getName().compareTo(boat.getName())==0){
-                System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
-            }
-
+        for(int i = 0; i < boat.getPossibleOptions().size(); i++) {
+            if(i > 0)      System.out.println();
+               System.out.println("Optie-nummer: " + (i + 1));
+               System.out.println("  Optie: " + boat.getPossibleOptions().get(i).getName());
+               if(boat.getPossibleOptions().get(i).getDescription() != null) System.out.println("Beschrijving: €" + Utility.formatPrice(ProductList.getOptionList().get(i).getPrice()));
+               System.out.println("  Prijs: € " + Utility.formatPrice(boat.getPossibleOptions().get(i).getPrice()));
         }
 
         System.out.println("———————————————————————————————————————————————————");
@@ -105,11 +102,12 @@ class Program {
                 continue;
             }
 
-                if(optionNummer >= ProductList.getOptionList().size()) {
+                if(optionNummer > boat.getPossibleOptions().size()) {
                     System.out.println("De optie met dit nummer bestaat niet.");
                     continue;
                 }
-                currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));;
+
+                currentQuotation.addOption(boat.getPossibleOptions().get((optionNummer - 1)));;
         }
 
 
@@ -121,7 +119,20 @@ class Program {
 
         System.out.println();
 
-        System.out.printf("Totaal price: €" + "%.2f", currentQuotation.getTotalPrice());
+        System.out.println("Boat: €" + Utility.formatPrice(this.currentQuotation.getBoat().getPrice()));
+
+        System.out.println();
+        System.out.println("Options:");
+
+        currentQuotation.getOptionList().forEach(option1 -> {
+            System.out.println( "  " + option1.getName() + ": €" + Utility.formatPrice(option1.getPrice()));
+        });
+
+        System.out.println();
+        System.out.println("Totaal price: €" + Utility.formatPrice(currentQuotation.getTotalPrice()));
+
+        System.out.println();
+        System.out.println("———————————————————————————————————————————————————");
     }
 
 
