@@ -15,6 +15,9 @@ public class ProductList {
     public static List<Boat> getBoatList() {return boatList;}
     public static List<Option> getOptionList() {return optionList;}
 
+
+
+
     // Add here the categories
 
 
@@ -30,7 +33,7 @@ public class ProductList {
         boatList.add(new Boat("Veerboot", 400_000_000, Utility.getCategorieByName("Grote boten")));
 
         //middelgrote boten
-        boatList.add(new Boat("Speedboot ",20_000_000, Utility.getCategorieByName("Middelgrote boten")));
+        boatList.add(new Boat("Speedboot",20_000_000, Utility.getCategorieByName("Middelgrote boten")));
         boatList.add(new Boat("Vissersboot",500_000_000, Utility.getCategorieByName("Middelgrote boten")));
         boatList.add(new Boat("Pontonboot", 1_000_000, Utility.getCategorieByName("Middelgrote boten")));
         boatList.add(new Boat("Sleepboot", 1_500_000, Utility.getCategorieByName("Middelgrote boten")));

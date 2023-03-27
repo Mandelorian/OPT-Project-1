@@ -3,9 +3,11 @@ package com.mandelorian;
 import com.mandelorian.library.Categorie;
 import com.mandelorian.product.Boat;
 import com.mandelorian.library.Utility;
+import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
 import com.mandelorian.quotation.Quotation;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,8 +17,9 @@ public class Main {
 
     public static void main(String[] args) {
         Categorie.setDefaultCategories();
-        ProductList.setDefaultOptionList();
         ProductList.setDefaultBoatList();
+        ProductList.setDefaultOptionList();
+
 
         Program program = new Program();
         program.start();
@@ -66,8 +69,70 @@ class Program {
             boat = ProductList.getBoatList().get((boatNumber - 1));
         }
 
-        Utility.clearScreen();
+        //Utility.clearScreen();
         this.setCurrentQuotation(this.createNewQuotation(boat));
+        //lijst opties
+
+        System.out.println("Welk optie's wilt u toevoegen");
+        System.out.println();
+
+        System.out.println("----------------------------------------");
+        System.out.println("               Optie lijst               ");
+        System.out.println("----------------------------------------");
+
+
+        for(int i = 0; i < ProductList.getOptionList().size(); i++) {
+
+           if (ProductList.getOptionList().get(i).getBoat().getName().compareTo(boat.getName())==0){
+                System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
+            }
+
+
+
+        }
+
+
+        System.out.println("----------------------------------------");
+
+        System.out.println();
+
+        int option = 1;
+
+
+        while (option == 1) {
+
+            System.out.print("Als u geen optie meer wilt toevoegen druk op: 0 ");
+            System.out.print("Kies de optie die je wilt toevoegen aan de boot: ");
+            int optionNummer = scanner.nextInt();
+            System.out.println();
+
+            if (optionNummer==0){
+                option =0;
+            }else {
+                if(optionNummer >= ProductList.getOptionList().size()) {
+                    System.out.println("De optie met dit nummer bestaat niet.");
+                    continue;
+                }
+
+                currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));;
+            }
+
+
+        }
+
+
+        //totaal prijs
+
+        System.out.println("----------------------------------------");
+        System.out.println("               totaal prijs               ");
+        System.out.println("----------------------------------------");
+
+        System.out.println();
+
+        System.out.println("Totaal price: €"+currentQuotation.getTotalPrice());
+
+
+
     }
 
 
@@ -92,6 +157,8 @@ class Program {
     public void setCurrentQuotation(Quotation quotation) {
         this.currentQuotation = quotation;
     }
+
+
 
 
 }
