@@ -43,16 +43,16 @@ class Program {
         System.out.println("Welk type boot wilt u kopen?");
         System.out.println();
 
-        System.out.println("----------------------------------------");
-        System.out.println("               Boot lijst               ");
-        System.out.println("----------------------------------------");
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                      Boot lijst                   ");
+        System.out.println("———————————————————————————————————————————————————");
 
         Boat boat = null;
         for(int i = 0; i < ProductList.getBoatList().size(); i++) {
             System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
         }
 
-        System.out.println("----------------------------------------");
+        System.out.println("———————————————————————————————————————————————————");
 
         System.out.println();
 
@@ -76,9 +76,9 @@ class Program {
         System.out.println("Welk optie's wilt u toevoegen");
         System.out.println();
 
-        System.out.println("----------------------------------------");
-        System.out.println("               Optie lijst               ");
-        System.out.println("----------------------------------------");
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                     Optie lijst                   ");
+        System.out.println("———————————————————————————————————————————————————");
 
 
         for(int i = 0; i < ProductList.getOptionList().size(); i++) {
@@ -87,18 +87,12 @@ class Program {
                 System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
             }
 
-
-
         }
 
-
-        System.out.println("----------------------------------------");
-
+        System.out.println("———————————————————————————————————————————————————");
         System.out.println();
 
         int option = 1;
-
-
         while (option == 1) {
 
             System.out.print("Als u geen optie meer wilt toevoegen druk op: 0 ");
@@ -106,33 +100,28 @@ class Program {
             int optionNummer = scanner.nextInt();
             System.out.println();
 
-            if (optionNummer==0){
+            if (optionNummer == 0) {
                 option =0;
-            }else {
+                continue;
+            }
+
                 if(optionNummer >= ProductList.getOptionList().size()) {
                     System.out.println("De optie met dit nummer bestaat niet.");
                     continue;
                 }
-
                 currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));;
-            }
-
-
         }
 
 
         //totaal prijs
 
-        System.out.println("----------------------------------------");
+        System.out.println("———————————————————————————————————————————————————");
         System.out.println("               totaal prijs               ");
-        System.out.println("----------------------------------------");
+        System.out.println("———————————————————————————————————————————————————");
 
         System.out.println();
 
-        System.out.println("Totaal price: €"+currentQuotation.getTotalPrice());
-
-
-
+        System.out.printf("Totaal price: €" + "%.2f", currentQuotation.getTotalPrice());
     }
 
 
