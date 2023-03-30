@@ -4,8 +4,6 @@ import com.mandelorian.product.Boat;
 import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
 
-import java.text.DecimalFormat;
-
 public class Utility {
 
     public static Boat getBoatByName(String name) {
@@ -36,16 +34,13 @@ public class Utility {
         Categorie categorie = null;
 
         for(Categorie cc : Categorie.getCategorieList()) {
+            System.out.println(cc.getName());
             if(!cc.getName().equalsIgnoreCase(name)) continue;
             categorie = cc;
             break;
         }
 
         return categorie;
-    }
-
-    public static String formatPrice(double price) {
-        return String.format("%,d", Math.round((float) price)) + ",00";
     }
 
     public static void clearScreen() {
