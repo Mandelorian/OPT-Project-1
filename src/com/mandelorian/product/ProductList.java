@@ -24,7 +24,6 @@ public class ProductList {
     // Add here all the different types of boats
     public static void setDefaultBoatList() {
         // boatList.add(new Boat("Example", getCategorie("ExampleCategorie")));
-        boatList = new ArrayList<>();
 
         //grote boten
         boatList.add(new Boat("Jacht", 48000000, Utility.getCategorieByName("Grote boten")));
@@ -54,7 +53,6 @@ public class ProductList {
     // set here all the options
     public static void setDefaultOptionList() {
         // optionList.add(new Option("Example", "description"));
-        optionList = new ArrayList<>();
 
         // Jacht
         optionList.add(new Option("Airconditioning-jacht", 500_000,null, Utility.getBoatByName("Jacht")));
