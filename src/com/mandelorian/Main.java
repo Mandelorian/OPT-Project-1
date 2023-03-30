@@ -3,11 +3,9 @@ package com.mandelorian;
 import com.mandelorian.library.Categorie;
 import com.mandelorian.product.Boat;
 import com.mandelorian.library.Utility;
-import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
 import com.mandelorian.quotation.Quotation;
 
-import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,9 +49,7 @@ class Program {
         for(int i = 0; i < ProductList.getBoatList().size(); i++) {
             System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
         }
-
         System.out.println("———————————————————————————————————————————————————");
-
         System.out.println();
 
         while (boat == null) {
@@ -61,7 +57,7 @@ class Program {
             int boatNumber = scanner.nextInt();
             System.out.println();
 
-            if(boatNumber >= ProductList.getBoatList().size()) {
+            if(boatNumber > ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
@@ -80,13 +76,12 @@ class Program {
         System.out.println("                     Optie lijst                   ");
         System.out.println("———————————————————————————————————————————————————");
 
-
-        for(int i = 0; i < ProductList.getOptionList().size(); i++) {
-
-           if (ProductList.getOptionList().get(i).getBoat().getName().compareTo(boat.getName())==0){
-                System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
-            }
-
+        for(int i = 0; i < boat.getPossibleOptions().size(); i++) {
+            if(i > 0)      System.out.println();
+               System.out.println("Optie-nummer: " + (i + 1));
+               System.out.println("  Optie: " + boat.getPossibleOptions().get(i).getName());
+               if(boat.getPossibleOptions().get(i).getDescription() != null) System.out.println("Beschrijving: €" + Utility.formatPrice(ProductList.getOptionList().get(i).getPrice()));
+               System.out.println("  Prijs: € " + Utility.formatPrice(boat.getPossibleOptions().get(i).getPrice()));
         }
 
         System.out.println("———————————————————————————————————————————————————");
@@ -105,11 +100,12 @@ class Program {
                 continue;
             }
 
-                if(optionNummer >= ProductList.getOptionList().size()) {
+                if(optionNummer > boat.getPossibleOptions().size()) {
                     System.out.println("De optie met dit nummer bestaat niet.");
                     continue;
                 }
-                currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));
+
+                currentQuotation.addOption(boat.getPossibleOptions().get((optionNummer - 1)));;
         }
 
 
@@ -121,13 +117,20 @@ class Program {
 
         System.out.println();
 
-        System.out.printf("Totaal price: €" + "%.2f", currentQuotation.getTotalPrice());
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        printCurrentQuotation();
+        System.out.println("Boat: €" + Utility.formatPrice(this.currentQuotation.getBoat().getPrice()));
+
+        System.out.println();
+        System.out.println("Options:");
+
+        currentQuotation.getOptionList().forEach(option1 -> {
+            System.out.println( "  " + option1.getName() + ": €" + Utility.formatPrice(option1.getPrice()));
+        });
+
+        System.out.println();
+        System.out.println("Totaal price: €" + Utility.formatPrice(currentQuotation.getTotalPrice()));
+
+        System.out.println();
+        System.out.println("———————————————————————————————————————————————————");
     }
 
 
@@ -154,59 +157,6 @@ class Program {
     }
 
 
-    public void printCurrentQuotation() {
-
-        int rows = 85;
-        for (int c = 1; c <= rows; c++) {
-            System.out.print("*");
-        }
-        System.out.println("");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "SHIPFLEX", "", "OFFERTE");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "Blauw-roodlaan 286", "", "");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "2718 SK Zoetermeer ", "", "");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "088 - 42 42 042", "", "");
-        System.out.print("*  ");
-        System.out.println();
-        //hier moeten nog de echte klant naam en het echte factuur adres worden ingevuld
-        //maar die hebben we nu nog niet
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "KLANT", "", "FACTUUR ADRES");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "Naam", "", "Naam");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "Bedrijfsnaam", "", "Bedrijfsnaam");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "Straat", "", "Straat");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "postcode, stad", "", "postcode, stad");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "email", "", "email");
-        int rows2 = 84;
-        for (int c = 1; c <= rows2; c++) {
-            System.out.print("*");
-        }
-        System.out.println("*");
-        System.out.print("*  ");
-        System.out.printf("%-30s %-30s %-30s\n", "Boot", currentQuotation.getBoat().getName(), currentQuotation.getBoat().getPrice());
-
-        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
-
-            System.out.print("*  ");
-            System.out.printf("%-30s %-30s %-30s\n", "optie", currentQuotation.getOptionList().get(i).getName(), currentQuotation.getOptionList().get(i).getPrice());
-
-        }
-
-        System.out.printf("%-30s %-30s %-30s\n", "*", "   Totaal:", "   "+currentQuotation.getTotalPrice());
-        for (int c = 1; c <= rows; c++) {
-            System.out.print("*");
-        }
-
-
-    }
 
 
 }
