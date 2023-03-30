@@ -1,17 +1,12 @@
 package com.mandelorian;
 
-import com.google.gson.Gson;
 import com.mandelorian.library.Categorie;
-import com.mandelorian.library.SavedFiles;
 import com.mandelorian.product.Boat;
 import com.mandelorian.library.Utility;
-import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
 import com.mandelorian.quotation.Quotation;
 
-import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
