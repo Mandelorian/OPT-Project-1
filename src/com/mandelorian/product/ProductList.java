@@ -19,12 +19,17 @@ public class ProductList {
 
 
     //niuew boat en option toevoegen
-    public static void addBoat(String name, double price, Categorie category) {
+
+    public static void  addBoat(String name, double price, Categorie category) {
+
         Boat newBoat = new Boat(name, price, category);
         ProductList.getBoatList().add(newBoat);
     }
 
+
+
     public static void addOption(String name, double price, String description, Boat boat) {
+
         Option newOption = new Option(name, price, description, boat);
         ProductList.getOptionList().add(newOption);
     }

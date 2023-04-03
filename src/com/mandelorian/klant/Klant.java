@@ -2,8 +2,6 @@ package com.mandelorian.klant;
 
 public class Klant  {
 
-
-
     private String naam;
     private String bedrijfNaam;
     private String stad;
@@ -42,12 +40,14 @@ public class Klant  {
         this.email = email;
     }
 
+
     public String getStad() {
         return stad;
     }
 
     public void setStad(String stad) {
         this.stad = stad;
+
     }
 
     public KlantType getKlanttype() {
@@ -57,6 +57,7 @@ public class Klant  {
     public void setKlanttype(KlantType klanttype) {
         this.klanttype = klanttype;
     }
+
 
 
     public String getNaam() {
@@ -82,6 +83,7 @@ public class Klant  {
     public void setStraat(String straat) {
         this.straat = straat;
     }
+
 
 }
 

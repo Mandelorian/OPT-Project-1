@@ -1,6 +1,8 @@
 package com.mandelorian.klant;
 
+
 import com.mandelorian.library.Categorie;
+
 import com.mandelorian.product.Option;
 
 import java.util.ArrayList;
@@ -19,7 +21,6 @@ public class KlantType {
         this.korting = korting;
     }
 
-
     public static void setDefaultKlantType() {
         klantTypeList.add(new KlantType("Overheid",10));
         klantTypeList.add(new KlantType("Bedrijf",5));
@@ -27,6 +28,7 @@ public class KlantType {
     }
 
     public static List<KlantType> getKlantTypeList() {return klantTypeList;}
+
 
 
 
