@@ -127,6 +127,7 @@ class Program {
         System.out.println("");
         System.out.println("");
         System.out.println("");
+
         currentQuotation.printQuotation();
     }
 

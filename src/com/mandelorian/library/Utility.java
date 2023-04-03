@@ -34,7 +34,6 @@ public class Utility {
         Categorie categorie = null;
 
         for(Categorie cc : Categorie.getCategorieList()) {
-            System.out.println(cc.getName());
             if(!cc.getName().equalsIgnoreCase(name)) continue;
             categorie = cc;
             break;
