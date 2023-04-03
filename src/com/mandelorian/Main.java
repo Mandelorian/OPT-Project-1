@@ -49,7 +49,8 @@ class Program {
 
         Boat boat = null;
         for(int i = 0; i < ProductList.getBoatList().size(); i++) {
-            System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
+            //System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
+            System.out.printf("%2d. %s\n", (i + 1), ProductList.getBoatList().get(i).getName());
         }
 
         System.out.println("———————————————————————————————————————————————————");
