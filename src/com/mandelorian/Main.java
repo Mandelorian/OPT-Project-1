@@ -9,6 +9,7 @@ import com.mandelorian.quotation.Quotation;
 
 import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,10 +60,24 @@ class Program {
 
         while (boat == null) {
             System.out.print("Kies de bootnummer van de boot die je wil: ");
-            int boatNumber = scanner.nextInt();
-            System.out.println();
+            int boatNumber;
 
-            if(boatNumber >= ProductList.getBoatList().size()) {
+            try {
+                boatNumber = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println();
+                System.out.println("Ongeldige invoer. Voer alstublieft een nummer in.");
+                System.out.println();
+                scanner.next();
+                continue;
+            }
+
+            if(boatNumber == 0) {
+                System.out.println("De boot met dit nummer bestaat niet.");
+                continue;
+            }
+
+            if(boatNumber > ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
