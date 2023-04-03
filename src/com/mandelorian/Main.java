@@ -85,7 +85,12 @@ class Program {
         for(int i = 0; i < ProductList.getOptionList().size(); i++) {
 
            if (ProductList.getOptionList().get(i).getBoat().getName().compareTo(boat.getName())==0){
-                System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
+                //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
+                //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
+               System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName());
+               System.out.println("   Prijs: "+ProductList.getOptionList().get(i).getPrice());
+               System.out.println("   Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
+               System.out.println();
             }
 
         }
