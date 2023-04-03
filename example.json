@@ -1,0 +1,19 @@
+{
+ "quotations": [  
+  {
+    "name": "quotation-0",
+      "boat": "Jacht",
+      "options": "jacuzzijacuzzi,saunajacuzzijacuzzi,sauna,bioscoop"
+  },  
+  {
+    "name": "quotation-1",
+      "boat": "Tanker",
+      "options": "extra tankcapaciteitextra tankcapaciteit,meer laadpompenextra tankcapaciteitextra tankcapaciteit,meer laadpompen,extra geavanceerd brandblusinstallatie"
+  },  
+  {
+    "name": "quotation-2",
+      "boat": "Vissersboot",
+      "options": "kraankraan,navigatie-apparatuurkraankraan,navigatie-apparatuur,koelopslag"
+  }
+]
+}
