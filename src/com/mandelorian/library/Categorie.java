@@ -21,6 +21,16 @@ public class Categorie {
         this.name = name;
     }
 
+    public static Categorie getCategoryByName(String categoryName) {
+        for (Categorie category : categorieList) {
+            if (category.getName().equalsIgnoreCase(categoryName)) {
+                return category;
+            }
+        }
+        return null;
+
+    }
+
     public String getName() {return this.name;}
 
     public void setName(String name) {this.name = name;}

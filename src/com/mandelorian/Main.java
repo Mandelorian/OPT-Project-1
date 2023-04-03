@@ -1,5 +1,7 @@
 package com.mandelorian;
 
+import com.mandelorian.klant.Klant;
+import com.mandelorian.klant.KlantType;
 import com.mandelorian.library.Categorie;
 import com.mandelorian.product.Boat;
 import com.mandelorian.library.Utility;
@@ -9,7 +11,6 @@ import com.mandelorian.quotation.Quotation;
 
 import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,10 +21,11 @@ public class Main {
         Categorie.setDefaultCategories();
         ProductList.setDefaultBoatList();
         ProductList.setDefaultOptionList();
+        KlantType.setDefaultKlantType();
 
 
         Program program = new Program();
-        program.start();
+        program.menu();
     }
 
 }
@@ -37,10 +39,52 @@ class Program {
         this.quotationList = new ArrayList<>();
     }
 
-    public void start() {
+
+
+    public void menu() {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        System.out.println("Welkom!");
+
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Nieuwe klanttype toevoegen");
+            System.out.println("2. Nieuwe boot toevoegen");
+            System.out.println("3. Nieuwe optie toevoegen");
+            System.out.println("4. Offerte maken");
+            System.out.println("5. Afsluiten");
+            System.out.print("Kies een optie: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addNewKlantType();
+                    break;
+                case 2:
+                    addNewBoat();
+                    break;
+                case 3:
+                    addNewOption();
+                    break;
+                case 4:
+                    offerteMaken();
+                    break;
+            }
+        } while (choice != 5);
+    }
+
+
+
+
+
+
+    public void offerteMaken() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welkom!");
+        Klant klant= createKlant();
+
+
         System.out.println("Welk type boot wilt u kopen?");
         System.out.println();
 
@@ -60,24 +104,10 @@ class Program {
 
         while (boat == null) {
             System.out.print("Kies de bootnummer van de boot die je wil: ");
-            int boatNumber;
+            int boatNumber = scanner.nextInt();
+            System.out.println();
 
-            try {
-                boatNumber = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println();
-                System.out.println("Ongeldige invoer. Voer alstublieft een nummer in.");
-                System.out.println();
-                scanner.next();
-                continue;
-            }
-
-            if(boatNumber == 0) {
-                System.out.println("De boot met dit nummer bestaat niet.");
-                continue;
-            }
-
-            if(boatNumber > ProductList.getBoatList().size()) {
+            if(boatNumber >= ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
@@ -142,15 +172,117 @@ class Program {
 
         System.out.println();
 
-        System.out.printf("Totaal price: €" + "%.2f", currentQuotation.getTotalPrice());
+        System.out.println("Toegepaste Korting percentage: "+klant.getKlanttype().getKorting() +"%");
+        System.out.printf("Totaal price: €" + "%.2f",currentQuotation.getTotalPrice()- (currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100)));
         System.out.println("");
         System.out.println("");
         System.out.println("");
         System.out.println("");
         System.out.println("");
 
-        currentQuotation.printQuotation();
+        currentQuotation.printQuotation(klant);
     }
+
+    private Klant createKlant() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Voer de klantgegevens in:");
+        System.out.print("Uw naam: ");
+        String naam = scanner.nextLine();
+        System.out.print("Bedrijfsnaam: ");
+        String bedrijfsnaam = scanner.nextLine();
+        System.out.print("E-mail: ");
+        String email = scanner.nextLine();
+        System.out.print("Straat: ");
+        String straat = scanner.nextLine();
+        System.out.print("Stad: ");
+        String stad = scanner.nextLine();
+
+        System.out.print("Postcode: ");
+        String postcode = scanner.nextLine();
+
+        System.out.println("Kies een klanttype:");
+        for (int i = 0; i < KlantType.getKlantTypeList().size(); i++) {
+            KlantType klanttype = KlantType.getKlantTypeList().get(i);
+            System.out.printf("%d. %s (Korting: %.2f%%)\n", i + 1, klanttype.getNaam(), klanttype.getKorting());
+        }
+        System.out.print("Kies het klanttype nummer: ");
+        int klanttypeIndex = scanner.nextInt() - 1;
+        KlantType klanttype = KlantType.getKlantTypeList().get(klanttypeIndex);
+
+        return new Klant(bedrijfsnaam, email, stad, klanttype, postcode,naam,straat);
+    }
+    private void addNewBoat() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Voer de naam van de nieuwe boot in: ");
+        String boatName = scanner.nextLine();
+
+        System.out.print("Voer de prijs van de nieuwe boot in: ");
+        double boatPrice = scanner.nextDouble();
+
+        System.out.print("Voer de categorie van de nieuwe boot in: ");
+        scanner.nextLine(); // Consume newline left-over
+        String categoryName = scanner.nextLine();
+
+        Categorie category = Categorie.getCategoryByName(categoryName);
+
+        //als gevraagd wordt voor nieuw category aan maken dan kunnen we deze toevoegen
+       /* if (category == null) {
+            System.out.println("Categorie niet gevonden. Een nieuwe categorie wordt aangemaakt.");
+            category = new Categorie(categoryName);
+            Categorie.addCategory(category);
+        }*/
+
+        ProductList.addBoat(boatName,boatPrice,category);
+        System.out.println("Nieuwe boot is succesvol toegevoegd.");
+    }
+
+    private void addNewOption() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Voer de naam van de nieuwe optie in: ");
+        String optionName = scanner.nextLine();
+
+        System.out.print("Voer de prijs van de nieuwe optie in: ");
+        double optionPrice = scanner.nextDouble();
+
+        System.out.print("Voer de beschrijving van de nieuwe optie in: ");
+        scanner.nextLine(); // Consume newline left-over
+        String optionDescription = scanner.nextLine();
+
+        System.out.print("Voer de naam van de boot in waar deze optie aan gekoppeld moet worden: ");
+        String boatName = scanner.nextLine();
+
+        Boat boat = Utility.getBoatByName(boatName);
+        if (boat == null) {
+            System.out.println("Boot niet gevonden. Voeg eerst de boot toe.");
+            return;
+        }
+
+        ProductList.addOption(optionName,optionPrice,optionDescription,boat);
+        System.out.println("Nieuwe optie is succesvol toegevoegd.");
+    }
+
+
+
+    private void addNewKlantType() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Voer de naam van het nieuwe klanttype in: ");
+        String klantTypeName = scanner.nextLine();
+
+        System.out.print("Voer de korting voor het nieuwe klanttype in (in procenten): ");
+        double klantTypeKorting = scanner.nextDouble();
+
+        KlantType newKlantType = new KlantType(klantTypeName, klantTypeKorting);
+        KlantType.getKlantTypeList().add(newKlantType);
+        System.out.println("Nieuw klanttype is succesvol toegevoegd.");
+    }
+
+
+
+
 
 
     public void setQuotationList(List<Quotation> quotationList) {
