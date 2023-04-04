@@ -237,7 +237,7 @@ class Program {
         while (quotations == null) {
             System.out.println("Wat is de naam van het bestand van de offertes die u wilt laden?");
             bestandsNaam = scanner.nextLine();
-            if(bestandsNaam.contains(".")) bestandsNaam = bestandsNaam.split(".")[0];
+            if(bestandsNaam.contains(".")) bestandsNaam = bestandsNaam.split("\\.")[0];
 
             if(bestandsNaam.equalsIgnoreCase("annuleer")) {
                 quotations = new ArrayList<>();
