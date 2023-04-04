@@ -44,7 +44,7 @@ public class ProductList {
     public static void setDefaultBoatList() {
         // boatList.add(new Boat("Example", getCategorie("ExampleCategorie")));
 
-        if(new File("./saved/boats.json") != null) {
+        if(new File("./saved/boats.json").exists()) {
             JsonObject object = Utility.getJSONData("./saved/", "boats");
             if (object == null) return;
             object.get("boat-list").getAsJsonArray().forEach(element -> {
@@ -88,7 +88,7 @@ public class ProductList {
     public static void setDefaultOptionList() {
         // optionList.add(new Option("Example", "description"));
 
-       if(new File("./saved/options.json") != null) {
+       if(new File("./saved/options.json").exists()) {
            JsonObject object = Utility.getJSONData("./saved/", "options");
            if(object == null) return;
            object.get("option-list").getAsJsonArray().forEach(element -> {

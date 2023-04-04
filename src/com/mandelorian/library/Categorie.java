@@ -14,7 +14,7 @@ public class Categorie {
     public static void setDefaultCategories() {
 
         // categorieList.add(new Categorie("Example"));
-        if(new File("./saved/categories.json") != null) {
+        if(new File("./saved/categories.json").exists()) {
             JsonObject object = Utility.getJSONData("./saved/", "categories");
             if (object == null) return;
             object.get("categorie-list").getAsJsonArray().forEach(name -> {
