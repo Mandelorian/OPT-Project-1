@@ -1,0 +1,18 @@
+{
+ "quotations": [  
+  {
+    "name": "Jacht",
+      "boat": "Jacht",
+      "options": "jacuzzijacuzzi,saunajacuzzijacuzzi,sauna,bioscoop",
+      "klant":   {
+        "name": "example",
+        "companyName": "test",
+        "city": "nowere",
+        "klantType": "Bedrijf",
+        "postcode": "9061 ND",
+        "email": "test@test.test",
+        "street": "teststreet"
+     }
+  }
+ ]
+}
