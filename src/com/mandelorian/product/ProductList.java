@@ -1,5 +1,6 @@
 package com.mandelorian.product;
 
+import com.mandelorian.library.Categorie;
 import com.mandelorian.library.Utility;
 
 import java.util.ArrayList;
@@ -14,6 +15,24 @@ public class ProductList {
 
     public static List<Boat> getBoatList() {return boatList;}
     public static List<Option> getOptionList() {return optionList;}
+
+
+
+    //niuew boat en option toevoegen
+
+    public static void  addBoat(String name, double price, Categorie category) {
+
+        Boat newBoat = new Boat(name, price, category);
+        ProductList.getBoatList().add(newBoat);
+    }
+
+
+
+    public static void addOption(String name, double price, String description, Boat boat) {
+
+        Option newOption = new Option(name, price, description, boat);
+        ProductList.getOptionList().add(newOption);
+    }
 
 
 

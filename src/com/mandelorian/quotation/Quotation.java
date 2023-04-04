@@ -3,6 +3,7 @@ package com.mandelorian.quotation;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mandelorian.klant.Klant;
 import com.mandelorian.library.Utility;
 import com.mandelorian.product.Boat;
 import com.mandelorian.product.Option;
@@ -154,7 +155,7 @@ public class Quotation {
 
     // layout https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Format-double-Java-printf-example#:~:text=Just%20use%20%25.2f%20as%20the,double%20to%20two%20decimal%20places.
 
-    public void printQuotation() {
+    public void printQuotation(Klant klant) {
         int paddingSides = 5;
         int paddingTop = 3;
         int rowLength = 100;
@@ -195,15 +196,15 @@ public class Quotation {
         System.out.print(sideCharacter + paddingSidesString);
         System.out.printf("%-30s %-30s %-30s%s\n", "KLANT", "", "FACTUUR ADRES", sideCharacter);
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "Naam", "", "Naam", sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Naam", "", klant.getNaam(), sideCharacter);
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "Bedrijfsnaam", "", "Bedrijfsnaam", sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Bedrijfsnaam", "", klant.getBedrijfNaam(), sideCharacter);
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "Straat", "", "Straat", sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Straat", "", klant.getStraat(), sideCharacter);
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "postcode, stad", "", "postcode, stad", sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "postcode, stad", "",klant.getPostcode()+" "+klant.getStad(), sideCharacter);
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "email", "", "email", sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "email", "", klant.getEmail(), sideCharacter);
 
         for(int i = 0; i < paddingTop; i++) {
             System.out.printf("%-30s %-30s %-30s\n", sideCharacter + "", "", "", sideCharacter);

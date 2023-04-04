@@ -13,4 +13,7 @@ public class Boat extends Product {
     public Categorie getCategorie() {
         return this.categorie;
     }
+
+
+
 }
