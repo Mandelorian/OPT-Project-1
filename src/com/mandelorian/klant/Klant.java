@@ -8,8 +8,6 @@ public class Klant  {
     private KlantType klanttype;
     private String postcode;
     private String email;
-
-
     private String straat;
 
 

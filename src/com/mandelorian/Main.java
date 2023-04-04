@@ -27,7 +27,6 @@ public class Main {
         ProductList.setDefaultOptionList();
         KlantType.setDefaultKlantType();
 
-
         Program program = new Program();
         program.menu();
     }
@@ -57,7 +56,9 @@ class Program {
             System.out.println("2. Nieuwe boot toevoegen");
             System.out.println("3. Nieuwe optie toevoegen");
             System.out.println("4. Offerte maken");
-            System.out.println("5. Afsluiten");
+            System.out.println("5. Offertes laden");
+            System.out.println("6. Offerte lijst");
+            System.out.println("7. Afsluiten");
             System.out.print("Kies een optie: ");
             choice = scanner.nextInt();
 
@@ -74,8 +75,15 @@ class Program {
                 case 4:
                     offerteMaken();
                     break;
+
+                case 5:
+                    offertesLaden();
+                    break;
+                case 6:
+                    offertesPrinten();
+                    break;
             }
-        } while (choice != 5);
+        } while (choice != 7);
     }
 
 
@@ -85,7 +93,6 @@ class Program {
 
     public void offerteMaken() {
         Scanner scanner = new Scanner(System.in);
-
         Klant klant= createKlant();
 
 
@@ -111,7 +118,7 @@ class Program {
             int boatNumber = scanner.nextInt();
             System.out.println();
 
-            if(boatNumber >= ProductList.getBoatList().size()) {
+            if(boatNumber > ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
@@ -120,7 +127,7 @@ class Program {
         }
 
         //Utility.clearScreen();
-        this.setCurrentQuotation(this.createNewQuotation(boat));
+        this.setCurrentQuotation(this.createNewQuotation(boat, klant));
         //lijst opties
 
         System.out.println("Welk optie's wilt u toevoegen");
@@ -184,8 +191,71 @@ class Program {
         System.out.println("");
         System.out.println("");
 
-        currentQuotation.printQuotation(klant);
+        currentQuotation.printQuotation();
+
+        int save = 2;
+        while (save == 2) {
+            System.out.println("Wilt u de offerte opslaan? ");
+            System.out.println("jaa / nee");
+
+            String answer = scanner.nextLine();
+
+            if(answer.equalsIgnoreCase("ja") || answer.equalsIgnoreCase("j") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
+                save = 1;
+                continue;
+            }
+
+            if(answer.equalsIgnoreCase("nee") || answer.equalsIgnoreCase("n") ||  answer.equalsIgnoreCase("no")) {
+                save = 0;
+                continue;
+            }
+        }
+
+        if(save == 1) {
+            currentQuotation.saveQuoatation("./saved/quotations/", klant.getNaam());
+        }
     }
+
+    public void offertesLaden() {
+        Scanner scanner = new Scanner(System.in);
+
+        String bestandsNaam = null;
+        List<Quotation> quotations = null;
+
+        while (quotations == null) {
+            System.out.println("Wat is de naam van het bestand van de offertes die u wilt laden?");
+            bestandsNaam = scanner.nextLine();
+            if(bestandsNaam.contains(".")) bestandsNaam = bestandsNaam.split(".")[0];
+
+            if(bestandsNaam.equalsIgnoreCase("annuleer")) {
+                quotations = new ArrayList<>();
+                break;
+            }
+
+            quotations = Quotation.loadQuatations("./saved/quotations/", bestandsNaam);
+            if(quotations == null) System.out.println("Kon de quotations niet laden probeer het opnieuw. of annuleer door annuleer te typen.");
+        }
+
+        quotationList.addAll(quotations);
+    }
+
+    public void offertesPrinten() {
+        System.out.println();
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                 Geladen Offertes                   ");
+        System.out.println("———————————————————————————————————————————————————");
+        this.quotationList.forEach(
+                quotation -> {
+                    System.out.println();
+                    System.out.println("Boat: " + quotation.getBoat().getName());
+                    System.out.println("Klant: " + quotation.getKlant().getNaam());
+                    System.out.println();
+                }
+        );
+
+        System.out.println("———————————————————————————————————————————————————");
+    }
+
 
     private Klant createKlant() {
         Scanner scanner = new Scanner(System.in);
@@ -293,15 +363,15 @@ class Program {
         this.quotationList = quotationList;
     }
 
-    public Quotation createNewQuotation(Boat boat) {
+    public Quotation createNewQuotation(Boat boat, Klant klant) {
         if(boat == null) return null;
-        Quotation quotation = new Quotation(boat);
+        Quotation quotation = new Quotation(boat, klant);
         this.quotationList.add(quotation);
         return quotation;
     }
-    public Quotation createNewQuotation(String boatName) {
+    public Quotation createNewQuotation(String boatName, Klant klant) {
         if(boatName == null) return null;
-        Quotation quotation = new Quotation(Utility.getBoatByName(boatName));
+        Quotation quotation = new Quotation(Utility.getBoatByName(boatName), klant);
         if(quotation == null) return null;
         this.quotationList.add(quotation);
         return quotation;

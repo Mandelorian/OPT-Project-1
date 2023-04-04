@@ -28,6 +28,17 @@ public class KlantType {
     }
 
     public static List<KlantType> getKlantTypeList() {return klantTypeList;}
+    public static KlantType getByName(String name) {
+        KlantType returned = null;
+
+        for(KlantType type : getKlantTypeList()) {
+            if(!type.naam.equalsIgnoreCase(name)) continue;
+            returned = type;
+            break;
+        }
+
+        return returned;
+    }
 
 
 
