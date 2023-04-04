@@ -1,8 +1,12 @@
 package com.mandelorian.product;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mandelorian.library.Categorie;
 import com.mandelorian.library.Utility;
+import com.mandelorian.quotation.Quotation;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,17 +25,13 @@ public class ProductList {
     //niuew boat en option toevoegen
 
     public static void  addBoat(String name, double price, Categorie category) {
-
-        Boat newBoat = new Boat(name, price, category);
-        ProductList.getBoatList().add(newBoat);
+        boatList.add(new Boat(name, price, category));
     }
 
 
 
     public static void addOption(String name, double price, String description, Boat boat) {
-
-        Option newOption = new Option(name, price, description, boat);
-        ProductList.getOptionList().add(newOption);
+        optionList.add(new Option(name, price, description, boat));
     }
 
 
@@ -43,6 +43,22 @@ public class ProductList {
     // Add here all the different types of boats
     public static void setDefaultBoatList() {
         // boatList.add(new Boat("Example", getCategorie("ExampleCategorie")));
+
+        if(new File("./saved/boats.json") != null) {
+            JsonObject object = Utility.getJSONData("./saved/", "boats");
+            if (object == null) return;
+            object.get("boat-list").getAsJsonArray().forEach(element -> {
+                JsonObject boatObject = element.getAsJsonObject();
+                String name = boatObject.get("name").getAsString();
+                double price = boatObject.get("price").getAsDouble();
+                String categorieName = boatObject.get("categorie").getAsString();
+
+                boatList.add(new Boat(name, price, Utility.getCategorieByName(categorieName)));
+            });
+        }
+
+
+        if(!boatList.isEmpty()) return;
 
         //grote boten
         boatList.add(new Boat("Jacht", 48000000, Utility.getCategorieByName("Grote boten")));
@@ -66,13 +82,28 @@ public class ProductList {
 
 
 
-
     }
 
     // set here all the options
     public static void setDefaultOptionList() {
         // optionList.add(new Option("Example", "description"));
 
+       if(new File("./saved/options.json") != null) {
+           JsonObject object = Utility.getJSONData("./saved/", "options");
+           if(object == null) return;
+           object.get("option-list").getAsJsonArray().forEach(element -> {
+               JsonObject optionObject = element.getAsJsonObject();
+               String name = optionObject.get("name").getAsString();
+               double price = optionObject.get("price").getAsDouble();
+               String boatName = optionObject.get("boat").getAsString();
+               String description = optionObject.get("description").getAsString();
+
+               optionList.add(new Option(name, price, description, Utility.getBoatByName(boatName)));
+           });
+       }
+
+
+        if(!optionList.isEmpty()) return;
         // Jacht
         optionList.add(new Option("Airconditioning-jacht", 500_000,null, Utility.getBoatByName("Jacht")));
         optionList.add(new Option("jacuzzi", 200_000,null, Utility.getBoatByName("Jacht")));
@@ -138,6 +169,37 @@ public class ProductList {
 
         //opties voor jacht
         //optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));
+
+
+    }
+
+    public static String getBoatsJSONString() {
+       String fileString = "";
+
+        for (Boat boat : boatList) {
+            fileString += (fileString.equalsIgnoreCase("")) ? boat.toString() : "," + boat.toString();
+        }
+
+        return  "{" + "\n"
+                + " \"boat-list\": "
+                + "[" + fileString + "\n ]"
+                + "\n"
+                + "}";
+    }
+
+    public static String getOptionsJSONString() {
+        String fileString = "";
+
+        for (Option option : optionList) {
+
+            fileString += (fileString.equalsIgnoreCase("")) ? option.toString() : "," + option.toString();
+        }
+
+        return  "{" + "\n"
+                + " \"option-list\": "
+                + "[" + fileString + "\n ]"
+                + "\n"
+                + "}";
     }
 
 }

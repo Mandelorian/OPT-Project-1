@@ -27,8 +27,8 @@ public class Main {
         ProductList.setDefaultOptionList();
         KlantType.setDefaultKlantType();
 
-        Program program = new Program();
-        program.menu();
+       Program program = new Program();
+       program.start();
     }
 
 }
@@ -42,9 +42,7 @@ class Program {
         this.quotationList = new ArrayList<>();
     }
 
-
-
-    public void menu() {
+    public void start() {
         Scanner scanner = new Scanner(System.in);
         int choice;
         System.out.println("Welkom!");
@@ -82,8 +80,18 @@ class Program {
                 case 6:
                     offertesPrinten();
                     break;
+                case 7:
+                    choice = stop();
+                    break;
             }
-        } while (choice != 7);
+        } while (choice != 100);
+    }
+
+    public int stop() {
+        Utility.saveJSONFile(Categorie.getCatoriesJSONString(), "./saved/", "categories");
+        Utility.saveJSONFile(ProductList.getBoatsJSONString(), "./saved/", "boats");
+        Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
+        return 100;
     }
 
 
@@ -138,9 +146,11 @@ class Program {
         System.out.println("———————————————————————————————————————————————————");
 
 
-        for(int i = 0; i < ProductList.getOptionList().size(); i++) {
+        List<Option> avalibleOptions = boat.getAvalibleOptions();
 
-           if (ProductList.getOptionList().get(i).getBoat().getName().compareTo(boat.getName())==0){
+        for(int i = 0; i < avalibleOptions.size(); i++) {
+
+           if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName())==0){
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
                System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName());
@@ -167,11 +177,13 @@ class Program {
                 continue;
             }
 
-                if(optionNummer >= ProductList.getOptionList().size()) {
+                if(optionNummer > avalibleOptions.size()) {
                     System.out.println("De optie met dit nummer bestaat niet.");
                     continue;
                 }
-                currentQuotation.addOption(ProductList.getOptionList().get((optionNummer - 1)));
+
+
+                currentQuotation.addOption(avalibleOptions.get((optionNummer - 1)));
         }
 
 
@@ -309,6 +321,7 @@ class Program {
         }*/
 
         ProductList.addBoat(boatName,boatPrice,category);
+        Utility.saveJSONFile(ProductList.getBoatsJSONString(), "./saved/", "boats");
         System.out.println("Nieuwe boot is succesvol toegevoegd.");
     }
 
@@ -334,7 +347,9 @@ class Program {
             return;
         }
 
+
         ProductList.addOption(optionName,optionPrice,optionDescription,boat);
+        Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
         System.out.println("Nieuwe optie is succesvol toegevoegd.");
     }
 

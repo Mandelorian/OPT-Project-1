@@ -16,4 +16,17 @@ public class Option extends Product {
 
     public Boat getBoat() {return boat;}
     public void setBoat(Boat boat) {this.boat = boat;}
+
+    @Override
+    public String toString() {
+//        System.out.println(this.getName() + " " + this.getPrice() + " " + this.getBoat().getName() + " " + this.getDescription() );
+
+
+        return   "  \n  {\n" +
+                "    \"name\": \"%name%\",".replace("%name%", this.getName()) + "\n" +
+                "      \"price\": %price%,".replace("%price%", this.getPrice() + "") + "\n" +
+                "      \"boat\": \"%boat%\",".replace("%boat%", (this.getBoat() == null || this.getBoat().getName() == null) ? "" : this.getBoat().getName()) + "\n" +
+                "      \"description\": \"%description%\"".replace("%description%", (this.getDescription() == null) ? "" : this.getDescription()) +
+                "\n  }";
+    }
 }
