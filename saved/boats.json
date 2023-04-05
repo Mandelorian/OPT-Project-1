@@ -1,0 +1,74 @@
+{
+ "boat-list": [  
+  {
+    "name": "Jacht",
+      "price": 4.8E7,
+      "categorie": "Grote boten"
+  },  
+  {
+    "name": "Cruise schip",
+      "price": 9.0E8,
+      "categorie": "Grote boten"
+  },  
+  {
+    "name": "Containerschip",
+      "price": 1.8E8,
+      "categorie": "Grote boten"
+  },  
+  {
+    "name": "Tanker",
+      "price": 1.8E8,
+      "categorie": "Grote boten"
+  },  
+  {
+    "name": "Veerboot",
+      "price": 4.0E8,
+      "categorie": "Grote boten"
+  },  
+  {
+    "name": "Speedboot",
+      "price": 2.0E7,
+      "categorie": "Middelgrote boten"
+  },  
+  {
+    "name": "Vissersboot",
+      "price": 5.0E8,
+      "categorie": "Middelgrote boten"
+  },  
+  {
+    "name": "Pontonboot",
+      "price": 1000000.0,
+      "categorie": "Middelgrote boten"
+  },  
+  {
+    "name": "Sleepboot",
+      "price": 1500000.0,
+      "categorie": "Middelgrote boten"
+  },  
+  {
+    "name": "Motorjacht",
+      "price": 3000000.0,
+      "categorie": "Middelgrote boten"
+  },  
+  {
+    "name": "Kano",
+      "price": 500.0,
+      "categorie": "Kleine boten"
+  },  
+  {
+    "name": "Kayak",
+      "price": 700.0,
+      "categorie": "Kleine boten"
+  },  
+  {
+    "name": "Roeiboot",
+      "price": 1000.0,
+      "categorie": "Kleine boten"
+  },  
+  {
+    "name": "Zeilbootje",
+      "price": 5000.0,
+      "categorie": "Kleine boten"
+  }
+ ]
+}
