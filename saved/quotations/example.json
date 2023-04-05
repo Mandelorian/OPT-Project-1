@@ -3,7 +3,7 @@
   {
     "name": "Jacht",
       "boat": "Jacht",
-      "options": "Airconditioning-jacht,jacuzzi,helikopterplatform,sauna",
+      "options": "jacuzzijacuzzi,saunajacuzzijacuzzi,sauna,bioscoop",
       "klant":   {
         "name": "example",
         "companyName": "test",
