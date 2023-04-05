@@ -243,7 +243,7 @@ class Program {
 
     public void offerteMaken() {
         Scanner scanner = new Scanner(System.in);
-        Klant klant= createKlant();
+        Klant klant = createKlant();
 
 
         System.out.println("Welk type boot wilt u kopen?");
