@@ -56,7 +56,8 @@ class Program {
             System.out.println("4. Offerte maken");
             System.out.println("5. Offertes laden");
             System.out.println("6. Offerte lijst");
-            System.out.println("7. Afsluiten");
+            System.out.println("7. Offerte bewerken");
+            System.out.println("8. Afsluiten");
             System.out.print("Kies een optie: ");
             choice = scanner.nextInt();
 
@@ -81,6 +82,9 @@ class Program {
                     offertesPrinten();
                     break;
                 case 7:
+                    editQuotation();
+                    continue;
+                case 8:
                     choice = stop();
                     break;
             }
@@ -88,11 +92,149 @@ class Program {
     }
 
     public int stop() {
-        Utility.saveJSONFile(Categorie.getCatoriesJSONString(), "./saved/", "categories");
-        Utility.saveJSONFile(ProductList.getBoatsJSONString(), "./saved/", "boats");
+        Utility.saveJSONFile(Categorie.getCatoriesJSONString(),  "./saved/", "categories");
+        Utility.saveJSONFile(ProductList.getBoatsJSONString(),   "./saved/", "boats");
         Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
         return 100;
     }
+
+    public void printCurrentQuotationOption() {
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                Huidige Optie lijst                ");
+        System.out.println("———————————————————————————————————————————————————");
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+            Option option = currentQuotation.getOptionList().get(i);
+            if (option != null) {
+                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), currentQuotation.getOptionList().get(i).getName(), currentQuotation.getOptionList().get(i).getPrice());
+            }
+            else {
+                System.out.println("empty");
+            }
+        }
+    }
+
+    public void editQuotation() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welke offerte wilt u bewerken?");
+        System.out.println();
+
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                      Offerte lijst                   ");
+        System.out.println("———————————————————————————————————————————————————");
+
+        for(int i = 0; i < quotationList.size(); i++) {
+            System.out.println((i + 1) + ". " + quotationList.get(i).getBoat().getName());
+        }
+
+        System.out.println("———————————————————————————————————————————————————");
+
+        System.out.println();
+
+        int quotationNumber = scanner.nextInt();
+        System.out.println();
+
+        if(quotationNumber > quotationList.size()) {
+            System.out.println("De offerte met dit nummer bestaat niet.");
+            return;
+        }
+
+        Quotation quotation = quotationList.get((quotationNumber - 1));
+        this.setCurrentQuotation(quotation);
+        int optionNumber;
+
+        System.out.println();
+
+        printCurrentQuotationOption();
+
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println();
+
+        System.out.println("Welk optie wilt u toevoegen");
+
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("               Optie lijst voor " + currentQuotation.getBoat().getName() + "                   ");
+        System.out.println("———————————————————————————————————————————————————");
+
+        for (int i = 0; i < ProductList.getOptionList().size(); i++) {
+            if (currentQuotation.getBoat().equals(ProductList.getOptionList().get(i).getBoat()))
+
+                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), ProductList.getOptionList().get(i).getName(), ProductList.getOptionList().get(i).getPrice());
+
+        }
+
+        System.out.print("Optie: ");
+        optionNumber = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println();
+
+        if(optionNumber > ProductList.getOptionList().size()) {
+            System.out.println("De optie met dit nummer bestaat niet.");
+            return;
+        }
+
+        for (int i = 0; i < ProductList.getOptionList().size(); i++) {
+            if (currentQuotation.getBoat().equals(ProductList.getOptionList().get(i).getBoat()))
+                if (optionNumber == (i + 1)) {
+                    currentQuotation.addOption(ProductList.getOptionList().get(i));
+                    System.out.println("\"" + currentQuotation.getOptionList().get(i).getName() + "\"" + " is toegevoegd aan de offerte.");
+                }
+        }
+
+        System.out.println();
+        System.out.println("Welk optie wilt u verwijderen");
+
+        printCurrentQuotationOption();
+
+        System.out.print("Optie: ");
+        optionNumber = scanner.nextInt();
+        System.out.println();
+
+        if (optionNumber > currentQuotation.getOptionList().size()) {
+            System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+            return;
+        }
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+                if (optionNumber == (i + 1)) {
+                    System.out.println("\"" + currentQuotation.getOptionList().get(i).getName() + "\"" + " is verwijderd van de offerte.");
+                    currentQuotation.removeOption(i);
+
+                }
+        }
+
+
+        printCurrentQuotationOption();
+
+        System.out.println();
+        System.out.println("Welke prijs wil jij bewerken?");
+
+        printCurrentQuotationOption();
+
+        System.out.print("Optie: ");
+        optionNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        if (optionNumber > currentQuotation.getOptionList().size()) {
+            System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+            return;
+        }
+
+        System.out.print("Nieuwe prijs: ");
+        double newPrice = scanner.nextDouble();
+        scanner.nextLine();
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+            if (optionNumber == (i + 1)) {
+                currentQuotation.getOptionList().get(i).setPrice(newPrice);
+                System.out.println("De prijs van \"" + currentQuotation.getOptionList().get(i).getName() + "\"" + " is gewijzigd.");
+            }
+        }
+
+        printCurrentQuotationOption();
+    }
+
 
 
 
