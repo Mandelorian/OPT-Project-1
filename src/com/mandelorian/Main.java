@@ -93,6 +93,7 @@ class Program {
 
     public int stop() {
         Utility.saveJSONFile(Categorie.getCatoriesJSONString(), "./saved/", "categories");
+        Utility.saveJSONFile(KlantType.getKlantTypesJSONString(), "./saved/", "clientTypes");
         Utility.saveJSONFile(ProductList.getBoatsJSONString(), "./saved/", "boats");
         Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
         Quotation.saveQuatationListToFile(this.quotationList, "./saved/quotations/", "quotations");
