@@ -51,13 +51,9 @@ class Program {
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Nieuwe klanttype toevoegen");
-            System.out.println("2. Nieuwe boot toevoegen");
-            System.out.println("3. Nieuwe optie toevoegen");
-            System.out.println("4. Offerte maken");
-            System.out.println("5. Offertes laden");
-            System.out.println("6. Offerte lijst");
-            System.out.println("7. Offerte bewerken");
-            System.out.println("8. Afsluiten");
+            System.out.println("2. Boot opties");
+            System.out.println("3. Offerte opties");
+            System.out.println("4. Afsluiten");
             System.out.print("Kies een optie: ");
             choice = scanner.nextInt();
 
@@ -66,30 +62,18 @@ class Program {
                     addNewKlantType();
                     break;
                 case 2:
-                    addNewBoat();
+                    bootOpties();
                     break;
                 case 3:
-                    addNewOption();
+                    offerteOpties();
                     break;
                 case 4:
-                    offerteMaken();
-                    break;
-
-                case 5:
-                    offertesLaden();
-                    break;
-                case 6:
-                    offertesPrinten();
-                    break;
-                case 7:
-                    editQuotation();
-                    continue;
-                case 8:
                     choice = stop();
                     break;
             }
         } while (choice != 100);
     }
+
 
     public int stop() {
         Utility.saveJSONFile(Categorie.getCatoriesJSONString(), "./saved/", "categories");
@@ -99,6 +83,76 @@ class Program {
         Quotation.saveQuatationListToFile(this.quotationList, "./saved/quotations/", "quotations");
         return 100;
     }
+
+
+    public void bootOpties(){
+
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        System.out.println("Kies een boot optie");
+
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Nieuwe boot toevoegen");
+            System.out.println("2. Nieuwe optie toevoegen");
+            System.out.println("3. Afsluiten");
+            System.out.print("Kies een optie: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addNewBoat();
+                    break;
+                case 2:
+                    addNewOption();
+                    break;
+                case 3:
+                    choice = stop();
+                    break;
+            }
+        } while (choice != 100);
+
+    }
+
+    public void offerteOpties(){
+
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        System.out.println("Kies een offerte optie");
+
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Offerte maken");
+            System.out.println("2. Offertes laden");
+            System.out.println("3. Offerte lijst");
+            System.out.println("4. Offerte bewerken");
+            System.out.println("5. Afsluiten");
+            System.out.print("Kies een optie: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    offerteMaken();
+                    break;
+                case 2:
+                    offertesLaden();
+                    break;
+                case 3:
+                    offertesPrinten();
+                    break;
+                case 4:
+                    editQuotation();
+                    continue;
+                case 5:
+                    choice = stop();
+                    break;
+            }
+        } while (choice != 100);
+
+    }
+
 
     public void offerteMaken() {
         Scanner scanner = new Scanner(System.in);
