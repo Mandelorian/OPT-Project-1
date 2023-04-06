@@ -3,8 +3,8 @@
   {
     "name": "Jacht",
       "boat": "Jacht",
-      "options": "jacuzzijacuzzi,saunajacuzzijacuzzi,sauna,bioscoop",
-    "klant":   {
+      "options": "Airconditioning-jacht,jacuzzi,helikopterplatform,sauna",
+    "klant": {
         "name": "example",
         "companyName": "test",
         "city": "nowere",
@@ -12,7 +12,7 @@
         "postcode": "9061 ND",
         "email": "test@test.test",
         "street": "teststreet"
-     }
+    }
   }
  ]
 }
