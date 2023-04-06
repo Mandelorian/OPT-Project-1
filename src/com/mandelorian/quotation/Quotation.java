@@ -234,7 +234,7 @@ public class Quotation {
             System.out.printf("%-30s %-30s %-30s%s\n", "optie", getOptionList().get(i).getName(), String.format("%.2f", getOptionList().get(i).getPrice()), sideCharacter);
         }
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "", "Totaal:" , "   "+  String.format("%.2f", getTotalPrice()), sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "", "Totaal prijs met Korting:" , "   "+  String.format("%.2f",getTotalPrice() - (getTotalPrice()*(klant.getKlanttype().getKorting()/100))), sideCharacter);
 
         for (int c = 1; c <= rowLength; c++) {
             System.out.print(topCharacter);
