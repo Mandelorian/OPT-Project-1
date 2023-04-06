@@ -136,16 +136,18 @@ public class OptionMenu extends Menu {
         System.out.println("———————————————————————————————————————————————————");
 
 
-        List<Option> avalibleOptions = boat.getAvalibleOptions();
+        List<Option> availableOptions = boat.getAvalibleOptions();
 
-        for (int i = 0; i < avalibleOptions.size(); i++) {
+        for (int i = 0; i < availableOptions.size(); i++) {
 
-            if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName()) == 0) {
+            if (availableOptions.get(i).getBoat().getName().compareTo(boat.getName()) == 0) {
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
-                System.out.println((i + 1) + ". " + avalibleOptions.get(i).getName());
-                System.out.println("   Prijs: " + avalibleOptions.get(i).getPrice());
-                System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
+                System.out.println((i + 1) + ". " + availableOptions.get(i).getName());
+                System.out.println("   Prijs: €" + availableOptions.get(i).getPrice());
+                if(availableOptions.get(i).getDescription()!=null) {
+                    System.out.println("   Beschrijving: " + availableOptions.get(i).getDescription());
+                }
                 System.out.println();
             }
 
@@ -167,20 +169,20 @@ public class OptionMenu extends Menu {
                 continue;
             }
 
-            if (optionNummer > avalibleOptions.size()) {
+            if (optionNummer > availableOptions.size()) {
                 System.out.println("De optie met dit nummer bestaat niet.");
                 continue;
             }
 
 
-            program.getCurrentQuotation().addOption(avalibleOptions.get((optionNummer - 1)));
+            program.getCurrentQuotation().addOption(availableOptions.get((optionNummer - 1)));
         }
 
 
         //totaal prijs
 
         System.out.println("———————————————————————————————————————————————————");
-        System.out.println("               totaal prijs               ");
+        System.out.println("               Totaal prijs               ");
         System.out.println("———————————————————————————————————————————————————");
 
         System.out.println();

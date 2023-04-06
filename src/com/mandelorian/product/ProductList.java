@@ -61,10 +61,10 @@ public class ProductList {
         if(!boatList.isEmpty()) return;
 
         //grote boten
-        boatList.add(new Boat("Jacht", 48000000, Utility.getCategorieByName("Grote boten")));
-        boatList.add(new Boat("Cruise schip", 900000000 ,Utility.getCategorieByName("Grote boten")));
-        boatList.add(new Boat("Containerschip",180000000, Utility.getCategorieByName("Grote boten")));
-        boatList.add(new Boat("Tanker",  180000000, Utility.getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Jacht", 48_000_000, Utility.getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Cruise schip", 900_000_000 ,Utility.getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Containerschip",180_000_000, Utility.getCategorieByName("Grote boten")));
+        boatList.add(new Boat("Tanker",  180_000_000, Utility.getCategorieByName("Grote boten")));
         boatList.add(new Boat("Veerboot", 400_000_000, Utility.getCategorieByName("Grote boten")));
 
         //middelgrote boten
@@ -124,7 +124,7 @@ public class ProductList {
 
         optionList.add(new Option("Meer laadvermogen", 48_000_000,null, Utility.getBoatByName("Containerschip")));
         optionList.add(new Option("Meer container capaciteit", 80_000_000,null, Utility.getBoatByName("Containerschip")));
-        optionList.add(new Option("Nieuwste professionele navigatieapparatuur", 4_800_000,null, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Professioneel navigatieapparatuur", 4_800_000,null, Utility.getBoatByName("Containerschip")));
         optionList.add(new Option("Duurzame uitlaat filters", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Containerschip")));
         optionList.add(new Option("Zonnepanelen", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Containerschip")));
 
