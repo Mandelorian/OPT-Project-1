@@ -82,11 +82,11 @@ class Program {
                     offertesPrinten();
                     break;
                 case 7:
+                    editQuotation();
+                    continue;
+                case 8:
                     choice = stop();
                     break;
-                editQuotation();
-                continue;
-                case 8:
             }
         } while (choice != 100);
     }
@@ -98,7 +98,6 @@ class Program {
         Quotation.saveQuatationListToFile(this.quotationList, "./saved/quotations/", "quotations");
         return 100;
     }
-
 
     public void offerteMaken() {
         Scanner scanner = new Scanner(System.in);
