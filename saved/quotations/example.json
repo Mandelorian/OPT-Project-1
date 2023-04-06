@@ -4,7 +4,7 @@
     "name": "Jacht",
       "boat": "Jacht",
       "options": "jacuzzijacuzzi,saunajacuzzijacuzzi,sauna,bioscoop",
-      "klant":   {
+    "klant":   {
         "name": "example",
         "companyName": "test",
         "city": "nowere",
