@@ -196,7 +196,8 @@ class Program {
 
         System.out.println();
 
-        System.out.println("Toegepaste Korting percentage: "+klant.getKlanttype().getKorting() +"%");
+        System.out.println("Toegepaste korting percentage: "+klant.getKlanttype().getKorting() +"%");
+        System.out.println("Toegepaste Korting : "+currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100));
         System.out.printf("Totaal price: €" + "%.2f",currentQuotation.getTotalPrice()- (currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100)));
         System.out.println("");
         System.out.println("");
