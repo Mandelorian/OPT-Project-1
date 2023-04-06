@@ -1,3 +1,4 @@
+import com.mandelorian.library.Categorie;
 import com.mandelorian.library.Utility;
 import com.mandelorian.product.Boat;
 import com.mandelorian.product.Option;
@@ -34,5 +35,19 @@ public class TestUtility {
 
         //Assert
         assertEquals(testOption, testOption2);
+    }
+
+    @Test
+    public void testGetCatogorieByName() {
+        //Arrange
+        String testCatogorieNaam = "testCatogorie";
+        Categorie testCategorie = new Categorie(testCatogorieNaam);
+        Categorie.getCategorieList().add(testCategorie);
+
+        //Act
+        Categorie testCategorie2 = Utility.getCategorieByName(testCatogorieNaam);
+
+        //Assert
+        assertEquals(testCategorie, testCategorie2);
     }
 }
