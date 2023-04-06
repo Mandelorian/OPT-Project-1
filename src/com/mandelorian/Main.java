@@ -495,8 +495,10 @@ class Program {
             System.out.println("1. Optie toevoegen");
             System.out.println("2. Optie verwijderen");
             System.out.println("3. Optie prijs bewerken");
-            System.out.println("5. Ga terug");
-            System.out.println("6. Afsluiten");
+            System.out.println("4. Toon opties in offerte ");
+            System.out.println("5. Offerte opslaan");
+            System.out.println("6. Ga terug");
+            System.out.println("7. Afsluiten");
             System.out.print("Kies een optie: ");
             offerteChoice = scanner.nextInt();
 
@@ -511,9 +513,15 @@ class Program {
                     optiePrijsBewerken();
                     break;
                 case 4:
-                    start();
+                    printCurrentQuotationOption();
                     break;
                 case 5:
+                    //offerteOpslaan();
+                    break;
+                case 6:
+                    start();
+                    break;
+                case 7:
                     offerteChoice = stop();
                     break;
             }
