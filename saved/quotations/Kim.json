@@ -1,0 +1,18 @@
+{
+ "quotations": [  
+  {
+    "name": "Cruise schip",
+      "boat": "Cruise schip",
+      "options": "spaspa,theaterspaspa,theater,casino",
+      "klant":   {
+        "name": "Kim",
+        "companyName": "north",
+        "city": "korea",
+        "klantType": "Overheid",
+        "postcode": "8888po",
+        "email": "kimvannorth@korea.com",
+        "street": "zuidkorea"
+     }
+  }
+ ]
+}
