@@ -13,7 +13,7 @@ public class MainMenu extends Menu {
 
     @Override
     public List<String> getChoices() {
-     return Arrays.asList("Nieuwe klanttype toevoegen", "Boot opties", "Offerte opties (maken, laden, bewerken)", "Afsluiten");
+     return Arrays.asList("Nieuwe klanttype toevoegen", "Boot opties (voeg boot toe,voeg optie toe)", "Offerte opties (maken, laden, bewerken)", "Afsluiten");
     }
 
     @Override
