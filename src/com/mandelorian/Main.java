@@ -463,6 +463,7 @@ class Program {
 
         int quotationNumber = 0;
         try {
+            System.out.println("Kies de nummer van de offerte die u wilt veranderen.");
             quotationNumber = scanner.nextInt();
             System.out.println();
         } catch (InputMismatchException e) {
@@ -502,7 +503,6 @@ class Program {
 
         System.out.print("Optie: ");
         optionNumber = scanner.nextInt();
-        scanner.nextLine();
         System.out.println();
 
         if (optionNumber > ProductList.getOptionList().size()) {
@@ -550,7 +550,7 @@ class Program {
 
         System.out.print("Optie: ");
         optionNumber = scanner.nextInt();
-        scanner.nextLine();
+//        scanner.nextLine();
 
         if (optionNumber > currentQuotation.getOptionList().size()) {
             System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
@@ -559,7 +559,7 @@ class Program {
 
         System.out.print("Nieuwe prijs: ");
         double newPrice = scanner.nextDouble();
-        scanner.nextLine();
+//        scanner.nextLine();
 
         for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
             if (optionNumber == (i + 1)) {
@@ -570,7 +570,7 @@ class Program {
 
         printCurrentQuotationOption();
 
-        currentQuotation.saveQuoatation("./saved/quotations/", createKlant().getNaam());
+        currentQuotation.saveQuoatation("./saved/quotations/", currentQuotation.getKlant().getNaam());
     }
 
         public void setQuotationList(List<Quotation> quotationList) {
