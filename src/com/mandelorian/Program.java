@@ -38,49 +38,6 @@ public class Program {
         Quotation.saveQuatationListToFile(this.quotationList, "./saved/quotations/", "quotations");
     }
 
-    public Klant createClient() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Voer de klantgegevens in:");
-        System.out.print("Uw naam: ");
-        String naam = scanner.nextLine();
-        System.out.print("Bedrijfsnaam: ");
-        String bedrijfsnaam = scanner.nextLine();
-        System.out.print("E-mail: ");
-        String email = scanner.nextLine();
-        System.out.print("Straat: ");
-        String straat = scanner.nextLine();
-        System.out.print("Stad: ");
-        String stad = scanner.nextLine();
-
-        System.out.print("Postcode: ");
-        String postcode = scanner.nextLine();
-
-        System.out.println("Kies een klanttype:");
-        for (int i = 0; i < KlantType.getKlantTypeList().size(); i++) {
-            KlantType klanttype = KlantType.getKlantTypeList().get(i);
-            System.out.printf("%d. %s (Korting: %.2f%%)\n", i + 1, klanttype.getNaam(), klanttype.getKorting());
-        }
-        System.out.print("Kies het klanttype nummer: ");
-        int klanttypeIndex = scanner.nextInt() - 1;
-        KlantType klanttype = KlantType.getKlantTypeList().get(klanttypeIndex);
-
-        return new Klant(bedrijfsnaam, email, stad, klanttype, postcode, naam, straat);
-    }
-
-    public void addNewKlantType() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Voer de naam van het nieuwe klanttype in: ");
-        String klantTypeName = scanner.nextLine();
-
-        System.out.print("Voer de korting voor het nieuwe klanttype in (in procenten): ");
-        double klantTypeKorting = scanner.nextDouble();
-
-        KlantType newKlantType = new KlantType(klantTypeName, klantTypeKorting);
-        KlantType.getKlantTypeList().add(newKlantType);
-        System.out.println("Nieuw klanttype is succesvol toegevoegd.");
-    }
 
     public List<Quotation> getQuotationList() {return quotationList;}
     public Quotation getCurrentQuotation() {return currentQuotation;}

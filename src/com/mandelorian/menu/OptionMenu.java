@@ -2,6 +2,7 @@ package com.mandelorian.menu;
 
 import com.mandelorian.Program;
 import com.mandelorian.klant.Klant;
+import com.mandelorian.klant.KlantType;
 import com.mandelorian.product.Boat;
 import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
@@ -90,7 +91,7 @@ public class OptionMenu extends Menu {
     
     public void createNewQuotation() {
         Scanner scanner = new Scanner(System.in);
-        Klant klant = program.createClient();
+        Klant klant = createClient();
 
 
         System.out.println("Welk type boot wilt u kopen?");
@@ -218,6 +219,36 @@ public class OptionMenu extends Menu {
         if (save == 1) {
             program.getCurrentQuotation().saveQuoatation("./saved/quotations/", klant.getNaam());
         }
+    }
+
+    public Klant createClient() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Voer de klantgegevens in:");
+        System.out.print("Uw naam: ");
+        String naam = scanner.nextLine();
+        System.out.print("Bedrijfsnaam: ");
+        String bedrijfsnaam = scanner.nextLine();
+        System.out.print("E-mail: ");
+        String email = scanner.nextLine();
+        System.out.print("Straat: ");
+        String straat = scanner.nextLine();
+        System.out.print("Stad: ");
+        String stad = scanner.nextLine();
+
+        System.out.print("Postcode: ");
+        String postcode = scanner.nextLine();
+
+        System.out.println("Kies een klanttype:");
+        for (int i = 0; i < KlantType.getKlantTypeList().size(); i++) {
+            KlantType klanttype = KlantType.getKlantTypeList().get(i);
+            System.out.printf("%d. %s (Korting: %.2f%%)\n", i + 1, klanttype.getNaam(), klanttype.getKorting());
+        }
+        System.out.print("Kies het klanttype nummer: ");
+        int klanttypeIndex = scanner.nextInt() - 1;
+        KlantType klanttype = KlantType.getKlantTypeList().get(klanttypeIndex);
+
+        return new Klant(bedrijfsnaam, email, stad, klanttype, postcode, naam, straat);
     }
 
     public void editQuotation() {

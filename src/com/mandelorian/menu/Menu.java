@@ -21,6 +21,7 @@ public abstract class Menu {
     }
 
     private void displayMenu() {
+        System.out.println();
         System.out.println("Menu");
         System.out.println();
         for (int i = 0; i < choices.size(); i++) {
