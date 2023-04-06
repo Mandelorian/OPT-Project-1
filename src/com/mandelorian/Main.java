@@ -85,7 +85,7 @@ class Program {
     }
 
 
-    public void bootOpties(){
+    public void bootOpties() {
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -119,7 +119,7 @@ class Program {
 
     }
 
-    public void offerteOpties(){
+    public void offerteOpties() {
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -259,9 +259,9 @@ class Program {
         System.out.println();
 
 
-        System.out.println("Toegepaste korting percentage: "+klant.getKlanttype().getKorting() +"%");
-        System.out.println("Toegepaste Korting : "+currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100));
-        System.out.printf("Totaal price: €" + "%.2f",currentQuotation.getTotalPrice()- (currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100)));
+        System.out.println("Toegepaste korting percentage: " + klant.getKlanttype().getKorting() + "%");
+        System.out.println("Toegepaste Korting : " + currentQuotation.getTotalPrice() * (klant.getKlanttype().getKorting() / 100));
+        System.out.printf("Totaal price: €" + "%.2f", currentQuotation.getTotalPrice() - (currentQuotation.getTotalPrice() * (klant.getKlanttype().getKorting() / 100)));
 
         System.out.println("");
         System.out.println("");
@@ -487,6 +487,41 @@ class Program {
 
         Quotation quotation = quotationList.get((quotationNumber - 1));
         this.setCurrentQuotation(quotation);
+
+        int offerteChoice;
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Optie toevoegen");
+            System.out.println("2. Optie verwijderen");
+            System.out.println("3. Optie prijs bewerken");
+            System.out.println("5. Ga terug");
+            System.out.println("6. Afsluiten");
+            System.out.print("Kies een optie: ");
+            offerteChoice = scanner.nextInt();
+
+            switch (offerteChoice) {
+                case 1:
+                    optieToevoegen();
+                    break;
+                case 2:
+                    optieVerwijderen();
+                    break;
+                case 3:
+                    optiePrijsBewerken();
+                    break;
+                case 4:
+                    start();
+                    break;
+                case 5:
+                    offerteChoice = stop();
+                    break;
+            }
+        } while (offerteChoice != 100);
+
+    }
+
+    public void optieToevoegen() {
         int optionNumber;
 
         System.out.println();
@@ -510,6 +545,7 @@ class Program {
         }
 
         System.out.print("Optie: ");
+        Scanner scanner = new Scanner(System.in);
         optionNumber = scanner.nextInt();
         System.out.println();
 
@@ -526,6 +562,11 @@ class Program {
                 }
         }
 
+    }
+
+    public void optieVerwijderen() {
+        int optionNumber;
+        Scanner scanner = new Scanner(System.in);
         System.out.println();
         System.out.println("Welk optie wilt u verwijderen");
 
@@ -550,15 +591,19 @@ class Program {
 
 
         printCurrentQuotationOption();
+    }
 
+    public void optiePrijsBewerken() {
+        int optionNumber;
         System.out.println();
         System.out.println("Welke prijs wil jij bewerken?");
 
         printCurrentQuotationOption();
 
         System.out.print("Optie: ");
+        Scanner scanner = new Scanner(System.in);
         optionNumber = scanner.nextInt();
-//        scanner.nextLine();
+
 
         if (optionNumber > currentQuotation.getOptionList().size()) {
             System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
@@ -567,7 +612,7 @@ class Program {
 
         System.out.print("Nieuwe prijs: ");
         double newPrice = scanner.nextDouble();
-//        scanner.nextLine();
+
 
         for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
             if (optionNumber == (i + 1)) {
@@ -581,20 +626,21 @@ class Program {
         currentQuotation.saveQuoatation("./saved/quotations/", currentQuotation.getKlant().getNaam());
     }
 
-        public void setQuotationList(List<Quotation> quotationList) {
+    public void setQuotationList(List<Quotation> quotationList) {
         this.quotationList = quotationList;
     }
 
     public Quotation createNewQuotation(Boat boat, Klant klant) {
-        if(boat == null) return null;
+        if (boat == null) return null;
         Quotation quotation = new Quotation(boat, klant);
         this.quotationList.add(quotation);
         return quotation;
     }
+
     public Quotation createNewQuotation(String boatName, Klant klant) {
-        if(boatName == null) return null;
+        if (boatName == null) return null;
         Quotation quotation = new Quotation(Utility.getBoatByName(boatName), klant);
-        if(quotation == null) return null;
+        if (quotation == null) return null;
         this.quotationList.add(quotation);
         return quotation;
     }
