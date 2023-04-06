@@ -91,6 +91,7 @@ class Program {
         Utility.saveJSONFile(Categorie.getCatoriesJSONString(), "./saved/", "categories");
         Utility.saveJSONFile(ProductList.getBoatsJSONString(), "./saved/", "boats");
         Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
+        Quotation.saveQuatationListToFile(this.quotationList, "./saved/quotations/", "quotations");
         return 100;
     }
 
@@ -153,9 +154,9 @@ class Program {
            if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName())==0){
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
-               System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName());
-               System.out.println("   Prijs: "+ProductList.getOptionList().get(i).getPrice());
-               System.out.println("   Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
+               System.out.println((i + 1) + ". " + avalibleOptions.get(i).getName());
+               System.out.println("   Prijs: "+ avalibleOptions.get(i).getPrice());
+               System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
                System.out.println();
             }
 
