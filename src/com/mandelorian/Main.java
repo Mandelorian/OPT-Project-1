@@ -92,9 +92,10 @@ class Program {
     }
 
     public int stop() {
-        Utility.saveJSONFile(Categorie.getCatoriesJSONString(),  "./saved/", "categories");
-        Utility.saveJSONFile(ProductList.getBoatsJSONString(),   "./saved/", "boats");
-        Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
+        Utility.saveJSONFile(Categorie.getCatoriesJSONString(),  "./saved/",            "categories");
+        Utility.saveJSONFile(ProductList.getBoatsJSONString(),   "./saved/",            "boats");
+        Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/",            "options");
+        Quotation.saveQuatationListToFile(quotationList,         "./saved/quotations/", "quotations");
         return 100;
     }
 
@@ -121,7 +122,7 @@ class Program {
         System.out.println();
 
         System.out.println("———————————————————————————————————————————————————");
-        System.out.println("                      Offerte lijst                   ");
+        System.out.println("                   Offerte lijst                   ");
         System.out.println("———————————————————————————————————————————————————");
 
         for(int i = 0; i < quotationList.size(); i++) {
@@ -132,8 +133,15 @@ class Program {
 
         System.out.println();
 
-        int quotationNumber = scanner.nextInt();
-        System.out.println();
+        int quotationNumber = 0;
+        try {
+            quotationNumber = scanner.nextInt();
+            System.out.println();
+        } catch (InputMismatchException e) {
+            System.out.println();
+            System.out.println("U heeft geen geldig nummer ingevoerd.");
+            System.out.println();
+        }
 
         if(quotationNumber > quotationList.size()) {
             System.out.println("De offerte met dit nummer bestaat niet.");
@@ -233,6 +241,8 @@ class Program {
         }
 
         printCurrentQuotationOption();
+
+        currentQuotation.saveQuoatation("./saved/quotations/", createKlant().getNaam());
     }
 
 
