@@ -1,0 +1,18 @@
+{
+ "quotations": [  
+  {
+    "name": "quotation-0",
+      "boat": "Zeilbootje",
+      "options": "elektrische noodmotor",
+      "klant":   {
+        "name": "t",
+        "companyName": "t",
+        "city": "t",
+        "klantType": "Particulier",
+        "postcode": "t",
+        "email": "t",
+        "street": "t"
+     }
+  }
+]
+}

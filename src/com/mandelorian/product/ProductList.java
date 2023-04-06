@@ -106,67 +106,91 @@ public class ProductList {
         if(!optionList.isEmpty()) return;
         // Jacht
         optionList.add(new Option("Airconditioning-jacht", 500_000,null, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("jacuzzi", 200_000,null, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("helikopterplatform", 1_500_000,null, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("sauna", 100_000,null, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("bioscoop", 350_000,null, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Jacuzzi", 200_000,null, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Helikopterplatform", 1_500_000,null, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Sauna", 100_000,null, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Bioscoop", 350_000,null, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Elektrische kookplaten", -20_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Duurzame uitlaat filters", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Zonnepanelen", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Jacht")));
 
-        optionList.add(new Option("zwembad", 10_000_000,null, Utility.getBoatByName("Cruise schip")));
-        optionList.add(new Option("spa", 35_000_000,null, Utility.getBoatByName("Cruise schip")));
-        optionList.add(new Option("theater", 4_000_000,null, Utility.getBoatByName("Cruise schip")));
-        optionList.add(new Option("casino", 68_000_000,null, Utility.getBoatByName("Cruise schip")));
-        optionList.add(new Option("fitnessruimte", 5_000_000,null, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Zwembad", 10_000_000,null, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Spa", 35_000_000,null, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Theater", 4_000_000,null, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Casino", 68_000_000,null, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Fitnessruimte", 5_000_000,null, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Duurzame uitlaat filters", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Zonnepanelen", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Cruise schip")));
 
-        optionList.add(new Option("meer laadvermogen", 48_000_000,null, Utility.getBoatByName("Containerschip")));
-        optionList.add(new Option("meer container capaciteit", 80_000_000,null, Utility.getBoatByName("Containerschip")));
-        optionList.add(new Option("nieuwste professionele navigatieapparatuur", 4_800_000,null, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Meer laadvermogen", 48_000_000,null, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Meer container capaciteit", 80_000_000,null, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Nieuwste professionele navigatieapparatuur", 4_800_000,null, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Duurzame uitlaat filters", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Zonnepanelen", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Containerschip")));
 
-        optionList.add(new Option("extra tankcapaciteit", 40_000_000,null, Utility.getBoatByName("Tanker")));
-        optionList.add(new Option("meer laadpompen", 10_000_000,null, Utility.getBoatByName("Tanker")));
-        optionList.add(new Option("extra geavanceerd brandblusinstallatie", 4_000_000,null, Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Extra tankcapaciteit", 40_000_000,null, Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Meer laadpompen", 10_000_000,null, Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Extra geavanceerd brandblusinstallatie", 4_000_000,null, Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Duurzame uitlaat filters", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Zonnepanelen", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Tanker")));
 
+        optionList.add(new Option("Meer passagierscapaciteit", 2_000_000,null, Utility.getBoatByName("Veerboot")));
+        optionList.add(new Option("Auto- en vrachtcapaciteit", 3_000_000,null, Utility.getBoatByName("Veerboot")));
+        optionList.add(new Option("Entertainment voorzieningen", 1_000_000,null, Utility.getBoatByName("Veerboot")));
+        optionList.add(new Option("Duurzame uitlaat filters", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Veerboot")));
+        optionList.add(new Option("Zonnepanelen", -5_000_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Veerboot")));
 
-        optionList.add(new Option("meer passagierscapaciteit", 2_000_000,null, Utility.getBoatByName("Veerboot")));
-        optionList.add(new Option("auto- en vrachtcapaciteit", 3_000_000,null, Utility.getBoatByName("Veerboot")));
-        optionList.add(new Option("entertainment voorzieningen", 1_000_000,null, Utility.getBoatByName("Veerboot")));
-
-        optionList.add(new Option("krachtigere motor", 50_000,null, Utility.getBoatByName("Speedboot")));
-        optionList.add(new Option("audio systeem", 10_000,null, Utility.getBoatByName("Speedboot")));
+        optionList.add(new Option("Krachtigere motor", 50_000,null, Utility.getBoatByName("Speedboot")));
+        optionList.add(new Option("Audio systeem", 10_000,null, Utility.getBoatByName("Speedboot")));
         optionList.add(new Option("GPS-navigatie", 5000,null, Utility.getBoatByName("Speedboot")));
+        optionList.add(new Option("Elektrische motor", -25_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Speedboot")));
+        optionList.add(new Option("Duurzamer/gerecycled rubber", -10_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Speedboot")));
 
-        optionList.add(new Option("kraan", 50_000,null, Utility.getBoatByName("Vissersboot")));
-        optionList.add(new Option("navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Vissersboot")));
-        optionList.add(new Option("koelopslag", 30_000,null, Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Kraan", 50_000,null, Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Koelopslag", 30_000,null, Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Elektrische motor", -25_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Zonnepanelen", -50_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Vissersboot")));
 
-        optionList.add(new Option("ligstoelen", 5000,null, Utility.getBoatByName("Pontonboot")));
-        optionList.add(new Option("tafels", 2000,null, Utility.getBoatByName("Pontonboot")));
-        optionList.add(new Option("audio systeem", 10_000,null, Utility.getBoatByName("Pontonboot")));
-        optionList.add(new Option("barbeque", 3000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Ligstoelen", 5000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Tafels", 2000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Audio systeem", 10_000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Barbeque", 3000,null, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Elektrische motor", -25_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Zonnepanelen", -50_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Pontonboot")));
 
-        optionList.add(new Option("sleephaken", 100_000,null, Utility.getBoatByName("Sleepboot")));
-        optionList.add(new Option("boegschroef", 50_000,null, Utility.getBoatByName("Sleepboot")));
-        optionList.add(new Option("navigatie-verlichting", 10_000,null, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Sleephaken", 100_000,null, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Boegschroef", 50_000,null, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Navigatie-verlichting", 10_000,null, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Zonnepanelen", -50_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Duurzame uitlaatfilters", -100_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Sleepboot")));
 
-        optionList.add(new Option("keukenapparatuur", 50_000,null, Utility.getBoatByName("Motorjacht")));
-        optionList.add(new Option("airconditioning-motorjacht", 100_000,null, Utility.getBoatByName("Motorjacht")));
-        optionList.add(new Option("navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Keukenapparatuur", 50_000,null, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Airconditioning-motorjacht", 100_000,null, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Elektrische motor", -25_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Elektrische kookplaat", -10_000,"Dit is een optie met miliekorting", Utility.getBoatByName("Motorjacht")));
 
-        optionList.add(new Option("extra peddels kano", 50,null, Utility.getBoatByName("Kano")));
-        optionList.add(new Option("extra zitplaatsen kano", 20,null, Utility.getBoatByName("Kano")));
-        optionList.add(new Option("waterdichte opbergvakken kano", 10,null, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("Extra peddels kano", 50,null, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("Extra zitplaatsen kano", 20,null, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("Waterdichte opbergvakken kano", 10,null, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("Duurzamer/gerecycled kunststof", -200,"Dit is een optie met miliekorting", Utility.getBoatByName("Kano")));
 
-        optionList.add(new Option("extra peddels kayak", 50,null, Utility.getBoatByName("Kayak")));
-        optionList.add(new Option("extra zitplaatsen kayak", 20,null, Utility.getBoatByName("Kayak")));
-        optionList.add(new Option("waterdichte opbergvakken kayak", 10,null, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("Extra peddels kayak", 50,null, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("Extra zitplaatsen kayak", 20,null, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("Waterdichte opbergvakken kayak", 10,null, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("Duurzamer/gerecycled kunststof", -200,"Dit is een optie met miliekorting", Utility.getBoatByName("Kayak")));
 
-        optionList.add(new Option("roer", 50,null, Utility.getBoatByName("Roeiboot")));
-        optionList.add(new Option("extra peddels", 50,null, Utility.getBoatByName("Roeiboot")));
-        optionList.add(new Option("extra zitplaatsen", 20,null, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("Roer", 50,null, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("Extra peddels", 50,null, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("Extra zitplaatsen", 20,null, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("Duurzamer/gerecycled kunststof", -200,"Dit is een optie met miliekorting", Utility.getBoatByName("Roeiboot")));
 
-        optionList.add(new Option("extra zeilen", 500,null, Utility.getBoatByName("Zeilbootje")));
-        optionList.add(new Option("navigatie-verlichting", 100,null, Utility.getBoatByName("Zeilbootje")));
-        optionList.add(new Option("noodmotor", 1000,null, Utility.getBoatByName("Zeilbootje")));
-
+        optionList.add(new Option("Extra zeilen", 500,null, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("Navigatie-verlichting", 100,null, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("Noodmotor", 1000,null, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("Elektrische noodmotor", -500,"Dit is een optie met miliekorting", Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("Zonnepanelen", -1000,"Dit is een optie met miliekorting", Utility.getBoatByName("Zeilbootje")));
         //opties voor jacht
         //optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));
 

@@ -149,13 +149,14 @@ class Program {
         List<Option> avalibleOptions = boat.getAvalibleOptions();
 
         for (int i = 0; i < avalibleOptions.size(); i++) {
-
             if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName()) == 0) {
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
                 System.out.println((i + 1) + ". " + avalibleOptions.get(i).getName());
                 System.out.println("   Prijs: " + avalibleOptions.get(i).getPrice());
-                System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
+                if(avalibleOptions.get(i).getDescription()!=null) {
+                    System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
+                }
                 System.out.println();
             }
 
@@ -208,7 +209,7 @@ class Program {
         int save = 2;
         while (save == 2) {
             System.out.println("Wilt u de offerte opslaan? ");
-            System.out.println("jaa / nee");
+            System.out.println("ja / nee");
 
             String answer = scanner.nextLine();
 
