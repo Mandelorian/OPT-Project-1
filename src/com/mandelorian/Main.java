@@ -96,7 +96,8 @@ class Program {
             System.out.println("\nMenu:");
             System.out.println("1. Nieuwe boot toevoegen");
             System.out.println("2. Nieuwe optie toevoegen");
-            System.out.println("3. Afsluiten");
+            System.out.println("3. Ga terug");
+            System.out.println("4. Afsluiten");
             System.out.print("Kies een optie: ");
             choice = scanner.nextInt();
 
@@ -108,6 +109,9 @@ class Program {
                     addNewOption();
                     break;
                 case 3:
+                    start();
+                    break;
+                case 4:
                     choice = stop();
                     break;
             }
@@ -128,7 +132,8 @@ class Program {
             System.out.println("2. Offertes laden");
             System.out.println("3. Offerte lijst");
             System.out.println("4. Offerte bewerken");
-            System.out.println("5. Afsluiten");
+            System.out.println("5. Ga terug");
+            System.out.println("6. Afsluiten");
             System.out.print("Kies een optie: ");
             choice = scanner.nextInt();
 
@@ -146,6 +151,9 @@ class Program {
                     editQuotation();
                     continue;
                 case 5:
+                    start();
+                    break;
+                case 6:
                     choice = stop();
                     break;
             }
