@@ -516,7 +516,7 @@ class Program {
                     printCurrentQuotationOption();
                     break;
                 case 5:
-                    //offerteOpslaan();
+                    offerteOpslaan();
                     break;
                 case 6:
                     start();
@@ -570,6 +570,8 @@ class Program {
                 }
         }
 
+        printCurrentQuotationOption();
+        currentQuotation.saveQuoatation("./saved/quotations/", currentQuotation.getKlant().getNaam());
     }
 
     public void optieVerwijderen() {
@@ -597,8 +599,8 @@ class Program {
             }
         }
 
-
         printCurrentQuotationOption();
+        currentQuotation.saveQuoatation("./saved/quotations/", currentQuotation.getKlant().getNaam());
     }
 
     public void optiePrijsBewerken() {
@@ -630,7 +632,10 @@ class Program {
         }
 
         printCurrentQuotationOption();
+        currentQuotation.saveQuoatation("./saved/quotations/", currentQuotation.getKlant().getNaam());
+    }
 
+    public void offerteOpslaan() {
         currentQuotation.saveQuoatation("./saved/quotations/", currentQuotation.getKlant().getNaam());
     }
 
