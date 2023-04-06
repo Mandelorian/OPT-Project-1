@@ -56,7 +56,8 @@ class Program {
             System.out.println("4. Offerte maken");
             System.out.println("5. Offertes laden");
             System.out.println("6. Offerte lijst");
-            System.out.println("7. Afsluiten");
+            System.out.println("7. Offerte bewerken");
+            System.out.println("8. Afsluiten");
             System.out.print("Kies een optie: ");
             choice = scanner.nextInt();
 
@@ -81,6 +82,9 @@ class Program {
                     offertesPrinten();
                     break;
                 case 7:
+                    editQuotation();
+                    continue;
+                case 8:
                     choice = stop();
                     break;
             }
@@ -95,11 +99,6 @@ class Program {
         return 100;
     }
 
-
-
-
-
-
     public void offerteMaken() {
         Scanner scanner = new Scanner(System.in);
         Klant klant = createKlant();
@@ -113,7 +112,7 @@ class Program {
         System.out.println("———————————————————————————————————————————————————");
 
         Boat boat = null;
-        for(int i = 0; i < ProductList.getBoatList().size(); i++) {
+        for (int i = 0; i < ProductList.getBoatList().size(); i++) {
             //System.out.println((i + 1) + ". " + ProductList.getBoatList().get(i).getName());
             System.out.printf("%2d. %s\n", (i + 1), ProductList.getBoatList().get(i).getName());
         }
@@ -127,7 +126,7 @@ class Program {
             int boatNumber = scanner.nextInt();
             System.out.println();
 
-            if(boatNumber > ProductList.getBoatList().size()) {
+            if (boatNumber > ProductList.getBoatList().size()) {
                 System.out.println("De boot met dit nummer bestaat niet.");
                 continue;
             }
@@ -149,15 +148,15 @@ class Program {
 
         List<Option> avalibleOptions = boat.getAvalibleOptions();
 
-        for(int i = 0; i < avalibleOptions.size(); i++) {
+        for (int i = 0; i < avalibleOptions.size(); i++) {
 
-           if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName())==0){
+            if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName()) == 0) {
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
-               System.out.println((i + 1) + ". " + avalibleOptions.get(i).getName());
-               System.out.println("   Prijs: "+ avalibleOptions.get(i).getPrice());
-               System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
-               System.out.println();
+                System.out.println((i + 1) + ". " + avalibleOptions.get(i).getName());
+                System.out.println("   Prijs: " + avalibleOptions.get(i).getPrice());
+                System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
+                System.out.println();
             }
 
         }
@@ -174,17 +173,17 @@ class Program {
             System.out.println();
 
             if (optionNummer == 0) {
-                option =0;
+                option = 0;
                 continue;
             }
 
-                if(optionNummer > avalibleOptions.size()) {
-                    System.out.println("De optie met dit nummer bestaat niet.");
-                    continue;
-                }
+            if (optionNummer > avalibleOptions.size()) {
+                System.out.println("De optie met dit nummer bestaat niet.");
+                continue;
+            }
 
 
-                currentQuotation.addOption(avalibleOptions.get((optionNummer - 1)));
+            currentQuotation.addOption(avalibleOptions.get((optionNummer - 1)));
         }
 
 
@@ -196,9 +195,11 @@ class Program {
 
         System.out.println();
 
+
         System.out.println("Toegepaste korting percentage: "+klant.getKlanttype().getKorting() +"%");
         System.out.println("Toegepaste Korting : "+currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100));
         System.out.printf("Totaal price: €" + "%.2f",currentQuotation.getTotalPrice()- (currentQuotation.getTotalPrice()*(klant.getKlanttype().getKorting()/100)));
+
         System.out.println("");
         System.out.println("");
         System.out.println("");
@@ -214,18 +215,18 @@ class Program {
 
             String answer = scanner.nextLine();
 
-            if(answer.equalsIgnoreCase("ja") || answer.equalsIgnoreCase("j") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
+            if (answer.equalsIgnoreCase("ja") || answer.equalsIgnoreCase("j") || answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
                 save = 1;
                 continue;
             }
 
-            if(answer.equalsIgnoreCase("nee") || answer.equalsIgnoreCase("n") ||  answer.equalsIgnoreCase("no")) {
+            if (answer.equalsIgnoreCase("nee") || answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 save = 0;
                 continue;
             }
         }
 
-        if(save == 1) {
+        if (save == 1) {
             currentQuotation.saveQuoatation("./saved/quotations/", klant.getNaam());
         }
     }
@@ -239,15 +240,16 @@ class Program {
         while (quotations == null) {
             System.out.println("Wat is de naam van het bestand van de offertes die u wilt laden?");
             bestandsNaam = scanner.nextLine();
-            if(bestandsNaam.contains(".")) bestandsNaam = bestandsNaam.split("\\.")[0];
+            if (bestandsNaam.contains(".")) bestandsNaam = bestandsNaam.split("\\.")[0];
 
-            if(bestandsNaam.equalsIgnoreCase("annuleer")) {
+            if (bestandsNaam.equalsIgnoreCase("annuleer")) {
                 quotations = new ArrayList<>();
                 break;
             }
 
             quotations = Quotation.loadQuatations("./saved/quotations/", bestandsNaam);
-            if(quotations == null) System.out.println("Kon de quotations niet laden probeer het opnieuw. of annuleer door annuleer te typen.");
+            if (quotations == null)
+                System.out.println("Kon de quotations niet laden probeer het opnieuw. of annuleer door annuleer te typen.");
         }
 
         quotationList.addAll(quotations);
@@ -298,8 +300,9 @@ class Program {
         int klanttypeIndex = scanner.nextInt() - 1;
         KlantType klanttype = KlantType.getKlantTypeList().get(klanttypeIndex);
 
-        return new Klant(bedrijfsnaam, email, stad, klanttype, postcode,naam,straat);
+        return new Klant(bedrijfsnaam, email, stad, klanttype, postcode, naam, straat);
     }
+
     private void addNewBoat() {
         Scanner scanner = new Scanner(System.in);
 
@@ -322,7 +325,7 @@ class Program {
             Categorie.addCategory(category);
         }*/
 
-        ProductList.addBoat(boatName,boatPrice,category);
+        ProductList.addBoat(boatName, boatPrice, category);
         Utility.saveJSONFile(ProductList.getBoatsJSONString(), "./saved/", "boats");
         System.out.println("Nieuwe boot is succesvol toegevoegd.");
     }
@@ -350,11 +353,10 @@ class Program {
         }
 
 
-        ProductList.addOption(optionName,optionPrice,optionDescription,boat);
+        ProductList.addOption(optionName, optionPrice, optionDescription, boat);
         Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
         System.out.println("Nieuwe optie is succesvol toegevoegd.");
     }
-
 
 
     private void addNewKlantType() {
@@ -371,12 +373,152 @@ class Program {
         System.out.println("Nieuw klanttype is succesvol toegevoegd.");
     }
 
+    public void printCurrentQuotationOption() {
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                Huidige Optie lijst                ");
+        System.out.println("———————————————————————————————————————————————————");
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+            Option option = currentQuotation.getOptionList().get(i);
+            if (option != null) {
+                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), currentQuotation.getOptionList().get(i).getName(), currentQuotation.getOptionList().get(i).getPrice());
+            } else {
+                System.out.println("empty");
+            }
+        }
+    }
+
+    public void editQuotation() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welke offerte wilt u bewerken?");
+        System.out.println();
+
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                   Offerte lijst                   ");
+        System.out.println("———————————————————————————————————————————————————");
+
+        for (int i = 0; i < quotationList.size(); i++) {
+            System.out.println((i + 1) + ". " + quotationList.get(i).getBoat().getName());
+        }
+
+        System.out.println("———————————————————————————————————————————————————");
+
+        System.out.println();
+
+        int quotationNumber = 0;
+        try {
+            quotationNumber = scanner.nextInt();
+            System.out.println();
+        } catch (InputMismatchException e) {
+            System.out.println();
+            System.out.println("U heeft geen geldig nummer ingevoerd.");
+            System.out.println();
+        }
+
+        if (quotationNumber > quotationList.size()) {
+            System.out.println("De offerte met dit nummer bestaat niet.");
+            return;
+        }
+
+        Quotation quotation = quotationList.get((quotationNumber - 1));
+        this.setCurrentQuotation(quotation);
+        int optionNumber;
+
+        System.out.println();
+
+        printCurrentQuotationOption();
+
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println();
+
+        System.out.println("Welk optie wilt u toevoegen");
+
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("               Optie lijst voor " + currentQuotation.getBoat().getName() + "                   ");
+        System.out.println("———————————————————————————————————————————————————");
+
+        for (int i = 0; i < ProductList.getOptionList().size(); i++) {
+            if (currentQuotation.getBoat().equals(ProductList.getOptionList().get(i).getBoat()))
+
+                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), ProductList.getOptionList().get(i).getName(), ProductList.getOptionList().get(i).getPrice());
+
+        }
+
+        System.out.print("Optie: ");
+        optionNumber = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println();
+
+        if (optionNumber > ProductList.getOptionList().size()) {
+            System.out.println("De optie met dit nummer bestaat niet.");
+            return;
+        }
+
+        for (int i = 0; i < ProductList.getOptionList().size(); i++) {
+            if (currentQuotation.getBoat().equals(ProductList.getOptionList().get(i).getBoat()))
+                if (optionNumber == (i + 1)) {
+                    currentQuotation.addOption(ProductList.getOptionList().get(i));
+                    System.out.println("\"" + currentQuotation.getOptionList().get(i).getName() + "\"" + " is toegevoegd aan de offerte.");
+                }
+        }
+
+        System.out.println();
+        System.out.println("Welk optie wilt u verwijderen");
+
+        printCurrentQuotationOption();
+
+        System.out.print("Optie: ");
+        optionNumber = scanner.nextInt();
+        System.out.println();
+
+        if (optionNumber > currentQuotation.getOptionList().size()) {
+            System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+            return;
+        }
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+            if (optionNumber == (i + 1)) {
+                System.out.println("\"" + currentQuotation.getOptionList().get(i).getName() + "\"" + " is verwijderd van de offerte.");
+                currentQuotation.removeOption(i);
+
+            }
+        }
 
 
+        printCurrentQuotationOption();
 
+        System.out.println();
+        System.out.println("Welke prijs wil jij bewerken?");
 
+        printCurrentQuotationOption();
 
-    public void setQuotationList(List<Quotation> quotationList) {
+        System.out.print("Optie: ");
+        optionNumber = scanner.nextInt();
+        scanner.nextLine();
+
+        if (optionNumber > currentQuotation.getOptionList().size()) {
+            System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+            return;
+        }
+
+        System.out.print("Nieuwe prijs: ");
+        double newPrice = scanner.nextDouble();
+        scanner.nextLine();
+
+        for (int i = 0; i < currentQuotation.getOptionList().size(); i++) {
+            if (optionNumber == (i + 1)) {
+                currentQuotation.getOptionList().get(i).setPrice(newPrice);
+                System.out.println("De prijs van \"" + currentQuotation.getOptionList().get(i).getName() + "\"" + " is gewijzigd.");
+            }
+        }
+
+        printCurrentQuotationOption();
+
+        currentQuotation.saveQuoatation("./saved/quotations/", createKlant().getNaam());
+    }
+
+        public void setQuotationList(List<Quotation> quotationList) {
         this.quotationList = quotationList;
     }
 
