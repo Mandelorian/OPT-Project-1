@@ -186,7 +186,8 @@ public class OptionMenu extends Menu {
 
 
         System.out.println("Toegepaste korting percentage: " + klant.getKlanttype().getKorting() + "%");
-        System.out.println("Toegepaste Korting : " + program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100));
+
+        System.out.println("Toegepaste Korting : " + String.format("%.2f", program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100)));
         System.out.printf("Totaal price: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - (program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100)));
 
         System.out.println("");
