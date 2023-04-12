@@ -164,24 +164,29 @@ public class OptionMenu extends Menu {
 
         int option = 1;
         while (option == 1) {
-
             System.out.print("Als u geen optie meer wilt toevoegen druk op: 0 ");
             System.out.print("Kies de optie die je wilt toevoegen aan de boot: ");
-            int optionNummer = scanner.nextInt();
-            System.out.println();
+            try {
+                int optionNummer = scanner.nextInt();
+                System.out.println();
 
-            if (optionNummer == 0) {
-                option = 0;
+                if (optionNummer == 0) {
+                    option = 0;
+                    continue;
+                }
+
+                if (optionNummer > availableOptions.size()) {
+                    System.out.println("De optie met dit nummer bestaat niet.");
+                    continue;
+                }
+                program.getCurrentQuotation().addOption(availableOptions.get((optionNummer - 1)));
+
+            } catch (InputMismatchException e) {
+                System.out.println("Ongeldige invoer. Voer a.u.b. een geldig getal in.");
+                scanner.next();
                 continue;
             }
 
-            if (optionNummer > availableOptions.size()) {
-                System.out.println("De optie met dit nummer bestaat niet.");
-                continue;
-            }
-
-
-            program.getCurrentQuotation().addOption(availableOptions.get((optionNummer - 1)));
         }
 
 
