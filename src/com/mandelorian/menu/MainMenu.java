@@ -27,12 +27,10 @@ public class MainMenu extends Menu {
                     addNewKlantType();
                     break;
                 case 2:
-                    stopMenu();
-                    new BoatMenu(program).chooseOption();
+                    Menu.openMenu(new BoatMenu(program));
                     break;
                 case 3:
-                    stopMenu();
-                    new OptionMenu(program).chooseOption();
+                    Menu.openMenu(new OptionMenu(program));
                     break;
                 case 4:
                    stopMenu();

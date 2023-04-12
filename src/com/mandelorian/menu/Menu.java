@@ -7,6 +7,8 @@ import java.util.*;
 
 public abstract class Menu {
 
+    private static Menu currentMenu;
+
     private List<String> choices;
     public Program program;
     private int choice = 0;
@@ -73,4 +75,10 @@ public abstract class Menu {
     // methods to change the menu
     public abstract void executeChoice(int choice);
     public abstract List<String> getChoices();
+
+    public static void openMenu(Menu menu) {
+        if(currentMenu != null) currentMenu.stopMenu();
+        currentMenu = menu;
+        menu.chooseOption();
+    }
 }

@@ -31,8 +31,7 @@ public class BoatMenu extends Menu {
                 addNewOption();
                 break;
             case 3:
-                stopMenu();
-                new MainMenu(program).chooseOption();
+                Menu.openMenu(new MainMenu(program));
                 break;
             case 4:
                 stopMenu();

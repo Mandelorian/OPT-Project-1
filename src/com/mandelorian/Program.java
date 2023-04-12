@@ -5,6 +5,7 @@ import com.mandelorian.klant.KlantType;
 import com.mandelorian.library.Categorie;
 import com.mandelorian.library.Utility;
 import com.mandelorian.menu.MainMenu;
+import com.mandelorian.menu.Menu;
 import com.mandelorian.product.Boat;
 import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
@@ -25,9 +26,7 @@ public class Program {
 
     public void start() {
         System.out.println("Welkom!");
-        MainMenu mainMenu = new MainMenu(this);
-        mainMenu.chooseOption();
-
+        Menu.openMenu(new MainMenu(this));
     }
 
     public void stop() {
