@@ -6,6 +6,7 @@ out/
 .idea workspaces.xml
 .idea tasks.xml
 .saved/quotations
+.idea/misc.xml
 
 ### Eclipse ###
 .apt_generated
