@@ -144,9 +144,13 @@ public class OptionMenu extends Menu {
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
                 System.out.println((i + 1) + ". " + availableOptions.get(i).getName());
-                System.out.println("   Prijs: €" + availableOptions.get(i).getPrice());
+                System.out.printf("   Prijs: €" + "%.2f", availableOptions.get(i).getPrice());
+                System.out.println();
                 if(availableOptions.get(i).getDescription()!=null) {
                     System.out.println("   Beschrijving: " + availableOptions.get(i).getDescription());
+                }
+                if(availableOptions.get(i).getMilieuKorting()!=0){
+                    System.out.printf("   Milieu korting: €" + "%.2f", availableOptions.get(i).getMilieuKorting());
                 }
                 System.out.println();
             }
@@ -174,7 +178,6 @@ public class OptionMenu extends Menu {
                 continue;
             }
 
-
             program.getCurrentQuotation().addOption(availableOptions.get((optionNummer - 1)));
         }
 
@@ -187,10 +190,16 @@ public class OptionMenu extends Menu {
 
         System.out.println();
 
-
+        System.out.println("Totale bruto prijs: €" + program.getCurrentQuotation().getTotalPrice());
+        System.out.println("Totale milieukorting: €" + program.getCurrentQuotation().getTotalMilieuKorting());
+        System.out.printf("Prijs inclusief milieukorting: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting());
+        System.out.println();
+        System.out.println();
         System.out.println("Toegepaste korting percentage: " + klant.getKlanttype().getKorting() + "%");
-        System.out.println("Toegepaste Korting : " + program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100));
-        System.out.printf("Totaal price: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - (program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100)));
+        System.out.printf("Toegepaste Korting: €" + "%.2f",(program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100));
+        System.out.println();
+        System.out.println();
+        System.out.printf("Totale prijs: €" + "%.2f", (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) - (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100));
 
         System.out.println("");
         System.out.println("");
@@ -268,7 +277,7 @@ public class OptionMenu extends Menu {
 
         int quotationNumber = 0;
         try {
-            System.out.println("Kies de nummer van de offerte die u wilt veranderen.");
+            System.out.println("Kies het nummer van de offerte die u wilt veranderen.");
             quotationNumber = scanner.nextInt();
             System.out.println();
         } catch (InputMismatchException e) {

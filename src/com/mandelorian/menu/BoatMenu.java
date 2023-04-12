@@ -81,6 +81,9 @@ public class BoatMenu extends Menu {
         scanner.nextLine(); // Consume newline left-over
         String optionDescription = scanner.nextLine();
 
+        System.out.printf("Voer de prijs van de milieukorting in: ");
+        double optionMilieuKorting = scanner.nextDouble();
+
         System.out.print("Voer de naam van de boot in waar deze optie aan gekoppeld moet worden: ");
         String boatName = scanner.nextLine();
 
@@ -91,7 +94,7 @@ public class BoatMenu extends Menu {
         }
 
 
-        ProductList.addOption(optionName, optionPrice, optionDescription, boat);
+        ProductList.addOption(optionName, optionPrice, optionDescription, optionMilieuKorting, boat);
         Utility.saveJSONFile(ProductList.getOptionsJSONString(), "./saved/", "options");
         System.out.println("Nieuwe optie is succesvol toegevoegd.");
     }

@@ -29,24 +29,53 @@ public class Quotation {
         this.klant = klant;
     }
 
-    public Boat getBoat() {return this.boat;}
-    public List<Option> getOptionList() {return this.optionList;}
-    public Klant getKlant() { return klant;}
+    public Boat getBoat() {
+        return this.boat;
+    }
 
-    public void setBoat(Boat boat) {this.boat = boat;}
-    public void addOption(Option option) {this.optionList.add(option);}
-    public void removeOption(Option option) {this.optionList.remove(option);}
-    public void removeOption(int index) {this.optionList.remove(index);}
+    public List<Option> getOptionList() {
+        return this.optionList;
+    }
+
+    public Klant getKlant() {
+        return klant;
+    }
+
+    public void setBoat(Boat boat) {
+        this.boat = boat;
+    }
+
+    public void addOption(Option option) {
+        this.optionList.add(option);
+    }
+
+    public void removeOption(Option option) {
+        this.optionList.remove(option);
+    }
+
+    public void removeOption(int index) {
+        this.optionList.remove(index);
+    }
 
 
     public double getTotalPrice() {
         double total = ((boat == null) ? 0 : boat.getPrice());
 
-        for(Option currentOption : optionList) {
+        for (Option currentOption : optionList) {
             total += currentOption.getPrice();
         }
 
-        return  total;
+        return total;
+    }
+
+    public double getTotalMilieuKorting() {
+        double total = 0;
+
+        for (Option currentOption : optionList) {
+            total += currentOption.getMilieuKorting();
+        }
+
+        return total;
     }
 
 
@@ -227,14 +256,33 @@ public class Quotation {
 
         System.out.println(sideCharacter);
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "Boot", boat.getName(), String.format("%.2f", boat.getPrice()), sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Boot", boat.getName(), String.format("€" + "%.2f", boat.getPrice()), sideCharacter);
 
         for (int i = 0; i < getOptionList().size(); i++) {
             System.out.print(sideCharacter + paddingSidesString);
-            System.out.printf("%-30s %-30s %-30s%s\n", "optie", getOptionList().get(i).getName(), String.format("%.2f", getOptionList().get(i).getPrice()), sideCharacter);
+            System.out.printf("%-30s %-30s %-30s%s\n", "Optie", getOptionList().get(i).getName(), String.format("€" + "%.2f", getOptionList().get(i).getPrice()), sideCharacter);
+            if(getOptionList().get(i).getMilieuKorting()!=0) {
+                System.out.print(sideCharacter + paddingSidesString);
+                System.out.printf("%-30s %-30s %-30s%s\n", "", "Milieu korting", String.format("€" + "%.2f", getOptionList().get(i).getMilieuKorting()), sideCharacter);
+            }
         }
+        System.out.println();
         System.out.print(sideCharacter + paddingSidesString);
-        System.out.printf("%-30s %-30s %-30s%s\n", "", "Totaal prijs met Korting:" , "   "+  String.format("%.2f",getTotalPrice() - (getTotalPrice()*(klant.getKlanttype().getKorting()/100))), sideCharacter);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Totale bruto prijs:" , "",  String.format("€" + "%.2f",getTotalPrice()), sideCharacter);
+        System.out.print(sideCharacter + paddingSidesString);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Totale milieu korting:" , "",  String.format("€" + "%.2f",getTotalMilieuKorting()), sideCharacter);
+        System.out.print(sideCharacter + paddingSidesString);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Totaal inclusief korting:" , "", String.format("€" + "%.2f", getTotalPrice() - getTotalMilieuKorting()), sideCharacter);
+        System.out.print(sideCharacter + paddingSidesString);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Toegepaste klant korting:", "", String.format("%.0f%%", klant.getKlanttype().getKorting()), sideCharacter);
+        System.out.print(sideCharacter + paddingSidesString);
+        System.out.printf("%-30s %-30s %-30s%s\n", "" , "", String.format("€" + "%.2f", (getTotalPrice() - getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100)), sideCharacter);
+        System.out.print(sideCharacter + paddingSidesString);
+        System.out.printf("%-30s %-30s %-30s%s\n", "Totale prijs met korting:" , "", String.format("€" + "%.2f", getTotalPrice() - getTotalMilieuKorting() - (getTotalPrice() - getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100)), sideCharacter);
+
+        for(int i = 0; i < paddingTop; i++) {
+            System.out.printf("%-30s %-30s %-30s\n", sideCharacter + "", "", "", sideCharacter);
+        }
 
         for (int c = 1; c <= rowLength; c++) {
             System.out.print(topCharacter);
