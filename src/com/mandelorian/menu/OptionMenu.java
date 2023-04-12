@@ -195,7 +195,8 @@ public class OptionMenu extends Menu {
         System.out.printf("Prijs inclusief milieukorting: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting());
         System.out.println();
         System.out.println();
-        System.out.println("Toegepaste korting percentage: " + klant.getKlanttype().getKorting() + "%");
+        System.out.printf("Toegepaste korting percentage: " + "%.0f%%", klant.getKlanttype().getKorting());
+        System.out.println();
         System.out.printf("Toegepaste Korting: €" + "%.2f", (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100));
         System.out.println();
         System.out.println();
