@@ -280,7 +280,7 @@ public class Quotation {
         System.out.print(sideCharacter + paddingSidesString);
         System.out.printf("%-30s %-30s %-30s%s\n", "Totale prijs met korting:" , "", String.format("€" + "%.2f", getTotalPrice() - getTotalMilieuKorting() - (getTotalPrice() - getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100)), sideCharacter);
 
-        for(int i = 0; i < paddingTop; i++) {
+        for(int i = 1; i < paddingTop; i++) {
             System.out.printf("%-30s %-30s %-30s\n", sideCharacter + "", "", "", sideCharacter);
         }
 
