@@ -86,7 +86,7 @@ public class OptionMenu extends Menu {
 
         List<Quotation> quotationList = program.getQuotationList();
         program.getQuotationList().addAll(quotations);
-       program.setQuotationList(quotationList);
+        program.setQuotationList(quotationList);
     }
     
     public void createNewQuotation() {
