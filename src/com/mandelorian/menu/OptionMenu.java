@@ -112,16 +112,19 @@ public class OptionMenu extends Menu {
         System.out.println();
 
         while (boat == null) {
-            System.out.print("Kies de bootnummer van de boot die je wil: ");
-            int boatNumber = scanner.nextInt();
-            System.out.println();
-
-            if (boatNumber > ProductList.getBoatList().size()) {
-                System.out.println("De boot met dit nummer bestaat niet.");
-                continue;
+            try {
+                System.out.print("Kies de bootnummer van de boot die je wil: ");
+                int boatNumber = scanner.nextInt();
+                System.out.println();
+                if (boatNumber > ProductList.getBoatList().size()) {
+                    System.out.println("De boot met dit nummer bestaat niet.");
+                    continue;
+                }
+                boat = ProductList.getBoatList().get((boatNumber - 1));
+            } catch (InputMismatchException e) {
+                System.out.println("Ongeldige invoer. Voer a.u.b. een geldig getal in.");
+                scanner.nextLine();
             }
-
-            boat = ProductList.getBoatList().get((boatNumber - 1));
         }
 
         //Utility.clearScreen();
@@ -136,21 +139,26 @@ public class OptionMenu extends Menu {
         System.out.println("———————————————————————————————————————————————————");
 
 
-        List<Option> avalibleOptions = boat.getAvalibleOptions();
+        List<Option> availableOptions = boat.getAvalibleOptions();
 
-        for (int i = 0; i < avalibleOptions.size(); i++) {
+        for (int i = 0; i < availableOptions.size(); i++) {
 
-            if (avalibleOptions.get(i).getBoat().getName().compareTo(boat.getName()) == 0) {
+            if (availableOptions.get(i).getBoat().getName().compareTo(boat.getName()) == 0) {
                 //System.out.println((i + 1) + ". " + ProductList.getOptionList().get(i).getName() + " Prijs: "+ProductList.getOptionList().get(i).getPrice()+" Beschrijving: " +ProductList.getOptionList().get(i).getDescription());
                 //System.out.printf("%2d. %-42s:\n", (i + 1), ProductList.getOptionList().get(i).getName());
-                System.out.println((i + 1) + ". " + avalibleOptions.get(i).getName());
-                System.out.println("   Prijs: " + avalibleOptions.get(i).getPrice());
-                System.out.println("   Beschrijving: " + avalibleOptions.get(i).getDescription());
+                System.out.println((i + 1) + ". " + availableOptions.get(i).getName());
+                System.out.printf("   Prijs: €" + "%.2f", availableOptions.get(i).getPrice());
+                System.out.println();
+                if(availableOptions.get(i).getDescription()!=null) {
+                    System.out.println("   Beschrijving: " + availableOptions.get(i).getDescription());
+                }
+                if(availableOptions.get(i).getMilieuKorting()!=0){
+                    System.out.printf("   Milieu korting: €" + "%.2f", availableOptions.get(i).getMilieuKorting());
+                }
                 System.out.println();
             }
-
         }
-
+        System.out.println();
         System.out.println("———————————————————————————————————————————————————");
         System.out.println();
 
@@ -167,28 +175,32 @@ public class OptionMenu extends Menu {
                 continue;
             }
 
-            if (optionNummer > avalibleOptions.size()) {
+            if (optionNummer > availableOptions.size()) {
                 System.out.println("De optie met dit nummer bestaat niet.");
                 continue;
             }
 
 
-            program.getCurrentQuotation().addOption(avalibleOptions.get((optionNummer - 1)));
+            program.getCurrentQuotation().addOption(availableOptions.get((optionNummer - 1)));
         }
 
 
         //totaal prijs
 
         System.out.println("———————————————————————————————————————————————————");
-        System.out.println("               totaal prijs               ");
+        System.out.println("               Totaal prijs               ");
         System.out.println("———————————————————————————————————————————————————");
-
         System.out.println();
-
-
+        System.out.println("Totale bruto prijs: €" + program.getCurrentQuotation().getTotalPrice());
+        System.out.println("Totale milieukorting: €" + program.getCurrentQuotation().getTotalMilieuKorting());
+        System.out.printf("Prijs inclusief milieukorting: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting());
+        System.out.println();
+        System.out.println();
         System.out.println("Toegepaste korting percentage: " + klant.getKlanttype().getKorting() + "%");
         System.out.println("Toegepaste Korting : " + program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100));
-        System.out.printf("Totaal price: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - (program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100)));
+        System.out.println();
+        System.out.println();
+        System.out.printf("Totale prijs: €" + "%.2f", (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) - (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100));
 
         System.out.println("");
         System.out.println("");
@@ -244,11 +256,20 @@ public class OptionMenu extends Menu {
             KlantType klanttype = KlantType.getKlantTypeList().get(i);
             System.out.printf("%d. %s (Korting: %.2f%%)\n", i + 1, klanttype.getNaam(), klanttype.getKorting());
         }
-        System.out.print("Kies het klanttype nummer: ");
-        int klanttypeIndex = scanner.nextInt() - 1;
-        KlantType klanttype = KlantType.getKlantTypeList().get(klanttypeIndex);
-
-        return new Klant(bedrijfsnaam, email, stad, klanttype, postcode, naam, straat);
+        while (true) {
+            System.out.print("Kies het klanttype nummer: ");
+            try {
+                int klanttypeIndex = scanner.nextInt() - 1;
+                KlantType klanttype = KlantType.getKlantTypeList().get(klanttypeIndex);
+                return new Klant(bedrijfsnaam, email, stad, klanttype, postcode, naam, straat);
+            } catch (InputMismatchException e) {
+                System.out.println("Ongeldige invoer. Voer a.u.b. een geldig getal in.");
+                scanner.nextLine(); // Consumeert de verkeerde input
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Ongeldige invoer. Het opgegeven klanttype nummer bestaat niet.");
+                scanner.nextLine(); // Consumeert de verkeerde input
+            }
+        }
     }
 
     public void editQuotation() {
