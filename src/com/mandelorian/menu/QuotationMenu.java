@@ -298,66 +298,82 @@ public class QuotationMenu extends Menu {
         Quotation quotation = program.getQuotationList().get((quotationNumber - 1));
         program.setCurrentQuotation(quotation);
         int optionNumber;
+        String optieJaNee;
 
         System.out.println();
 
         printCurrentQuotationOption();
 
-        System.out.println("———————————————————————————————————————————————————");
-        System.out.println();
+        System.out.println("Wilt u een optie toevoegen? (j/n)");
+        scanner.nextLine();
+        optieJaNee = scanner.nextLine();
+        List<Option> avalibleOptions = program.getCurrentQuotation().getBoat().getAvalibleOptions();;
+        Option chosenOption;
 
-        System.out.println("Welk optie wilt u toevoegen");
+        if (optieJaNee.equals("j") || optieJaNee.equals("ja") || optieJaNee.equals("y") || optieJaNee.equals("yes") ||
+                optieJaNee.equals("J") || optieJaNee.equals("JA") || optieJaNee.equals("Ja")|| optieJaNee.equals("Y")   ||
+                optieJaNee.equals("YES") || optieJaNee.equals("Yes"))
+        {
+            System.out.println("———————————————————————————————————————————————————");
+            System.out.println();
+            System.out.println("Welk optie wilt u toevoegen");
 
-        System.out.println("———————————————————————————————————————————————————");
-        System.out.println("               Optie lijst voor " + program.getCurrentQuotation().getBoat().getName() + "                   ");
-        System.out.println("———————————————————————————————————————————————————");
+            System.out.println("———————————————————————————————————————————————————");
+            System.out.println("               Optie lijst voor " + program.getCurrentQuotation().getBoat().getName() + "                   ");
+            System.out.println("———————————————————————————————————————————————————");
 
-        List<Option> avalibleOptions = program.getCurrentQuotation().getBoat().getAvalibleOptions();
+            for (int i = 0; i < avalibleOptions.size(); i++) {
+                if (program.getCurrentQuotation().getBoat().equals(avalibleOptions.get(i).getBoat()))
 
-        for (int i = 0; i < avalibleOptions.size(); i++) {
-            if (program.getCurrentQuotation().getBoat().equals(avalibleOptions.get(i).getBoat()))
+                    System.out.printf("%2d. %-25s: %.2f\n", (i + 1), avalibleOptions.get(i).getName(), avalibleOptions.get(i).getPrice());
 
-                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), avalibleOptions.get(i).getName(), avalibleOptions.get(i).getPrice());
+            }
+
+            System.out.print("Optie: ");
+            optionNumber = scanner.nextInt();
+            System.out.println();
+
+            if (optionNumber > avalibleOptions.size()) {
+                System.out.println("De optie met dit nummer bestaat niet.");
+                return;
+            }
+
+            chosenOption = avalibleOptions.get(optionNumber -1);
+            program.getCurrentQuotation().addOption(chosenOption);
+            System.out.println("\"" + chosenOption.getName() + "\"" + " is toegevoegd aan de offerte.");
 
         }
 
-        System.out.print("Optie: ");
-        optionNumber = scanner.nextInt();
-        System.out.println();
+        System.out.println("Wilt u een optie verwijderen? (j/n)");
+        scanner.nextLine();
+        optieJaNee = scanner.nextLine();
 
-        if (optionNumber > avalibleOptions.size()) {
-            System.out.println("De optie met dit nummer bestaat niet.");
-            return;
+
+        if (optieJaNee.equals("j") || optieJaNee.equals("ja") || optieJaNee.equals("y") || optieJaNee.equals("yes") ||
+                optieJaNee.equals("J") || optieJaNee.equals("JA") || optieJaNee.equals("Ja")|| optieJaNee.equals("Y")   ||
+                optieJaNee.equals("YES") || optieJaNee.equals("Yes"))
+        {
+            System.out.println();
+            System.out.println("Welk optie wilt u verwijderen? (j/n)");
+            printCurrentQuotationOption();
+
+            System.out.print("Optie: ");
+            optionNumber = scanner.nextInt();
+            System.out.println();
+
+            chosenOption = avalibleOptions.get(optionNumber -1);
+
+            if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
+                System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+                return;
+            }
+
+            avalibleOptions = program.getCurrentQuotation().getOptionList();
+            chosenOption = avalibleOptions.get(optionNumber - 1);
+            System.out.println("\"" + chosenOption.getName() + "\"" + " is verwijderd van de offerte.");
+            program.getCurrentQuotation().removeOption(chosenOption);
+
         }
-
-        Option chosenOption = avalibleOptions.get(optionNumber -1);
-        program.getCurrentQuotation().addOption(chosenOption);
-        System.out.println("\"" + chosenOption.getName() + "\"" + " is toegevoegd aan de offerte.");
-
-        System.out.println();
-        System.out.println("Welk optie wilt u verwijderen?Als u niks wilt verwijderen druk op 0");
-
-         int verwijderoptie = scanner.nextInt();
-
-         if (verwijderoptie!=0){
-             printCurrentQuotationOption();
-
-             System.out.print("Optie: ");
-             optionNumber = scanner.nextInt();
-             System.out.println();
-
-             if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
-                 System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
-                 return;
-             }
-
-             avalibleOptions = program.getCurrentQuotation().getOptionList();
-             chosenOption = avalibleOptions.get(optionNumber - 1);
-             System.out.println("\"" + chosenOption.getName() + "\"" + " is verwijderd van de offerte.");
-             program.getCurrentQuotation().removeOption(chosenOption);
-
-         }
-
 
         printCurrentQuotationOption();
 
