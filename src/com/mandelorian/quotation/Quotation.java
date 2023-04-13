@@ -252,4 +252,14 @@ public class Quotation {
 
     }
 
+    public double getTotalMilieuKorting() {
+        double total = 0;
+
+        for (Option currentOption : optionList) {
+            total += currentOption.getMilieuKorting();
+        }
+
+        return total;
+    }
+
 }
