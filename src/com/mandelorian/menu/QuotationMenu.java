@@ -335,51 +335,60 @@ public class QuotationMenu extends Menu {
         System.out.println("\"" + chosenOption.getName() + "\"" + " is toegevoegd aan de offerte.");
 
         System.out.println();
-        System.out.println("Welk optie wilt u verwijderen");
+        System.out.println("Welk optie wilt u verwijderen?Als u niks wilt verwijderen druk op 0");
+
+         int verwijderoptie = scanner.nextInt();
+
+         if (verwijderoptie!=0){
+             printCurrentQuotationOption();
+
+             System.out.print("Optie: ");
+             optionNumber = scanner.nextInt();
+             System.out.println();
+
+             if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
+                 System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+                 return;
+             }
+
+             avalibleOptions = program.getCurrentQuotation().getOptionList();
+             chosenOption = avalibleOptions.get(optionNumber - 1);
+             System.out.println("\"" + chosenOption.getName() + "\"" + " is verwijderd van de offerte.");
+             program.getCurrentQuotation().removeOption(chosenOption);
+
+         }
+
 
         printCurrentQuotationOption();
 
-        System.out.print("Optie: ");
-        optionNumber = scanner.nextInt();
         System.out.println();
-
-        if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
-            System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
-            return;
-        }
-
-        avalibleOptions = program.getCurrentQuotation().getOptionList();
-        chosenOption = avalibleOptions.get(optionNumber - 1);
-        System.out.println("\"" + chosenOption.getName() + "\"" + " is verwijderd van de offerte.");
-        program.getCurrentQuotation().removeOption(chosenOption);
-
-
+        System.out.println("Welke prijs wil jij bewerken?Als u niet wilt bewerken druk op 0");
         printCurrentQuotationOption();
 
-        System.out.println();
-        System.out.println("Welke prijs wil jij bewerken?");
+        int bewerkOptie = scanner.nextInt();
 
-        printCurrentQuotationOption();
-
-        System.out.print("Optie: ");
-        optionNumber = scanner.nextInt();
+        if (bewerkOptie!=0){
+            System.out.print("Optie: ");
+            optionNumber = scanner.nextInt();
 //        scanner.nextLine();
 
-        if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
-            System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
-            return;
-        }
+            if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
+                System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+                return;
+            }
 
-        System.out.print("Nieuwe prijs: ");
-        double newPrice = scanner.nextDouble();
+            System.out.print("Nieuwe prijs: ");
+            double newPrice = scanner.nextDouble();
 //        scanner.nextLine();
 
-        for (int i = 0; i < program.getCurrentQuotation().getOptionList().size(); i++) {
-            if (optionNumber == (i + 1)) {
-                program.getCurrentQuotation().getOptionList().get(i).setPrice(newPrice);
-                System.out.println("De prijs van \"" + program.getCurrentQuotation().getOptionList().get(i).getName() + "\"" + " is gewijzigd.");
+            for (int i = 0; i < program.getCurrentQuotation().getOptionList().size(); i++) {
+                if (optionNumber == (i + 1)) {
+                    program.getCurrentQuotation().getOptionList().get(i).setPrice(newPrice);
+                    System.out.println("De prijs van \"" + program.getCurrentQuotation().getOptionList().get(i).getName() + "\"" + " is gewijzigd.");
+                }
             }
         }
+
 
         printCurrentQuotationOption();
 
