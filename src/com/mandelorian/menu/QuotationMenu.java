@@ -182,13 +182,16 @@ public class QuotationMenu extends Menu {
         System.out.println("               Totaal prijs               ");
         System.out.println("———————————————————————————————————————————————————");
         System.out.println();
-        System.out.println("Totale bruto prijs: €" + program.getCurrentQuotation().getTotalPrice());
-        System.out.println("Totale milieukorting: €" + program.getCurrentQuotation().getTotalMilieuKorting());
+        System.out.printf("Totale bruto prijs: €" + "%.2f", program.getCurrentQuotation().getTotalPrice());
+        System.out.println();
+        System.out.printf("Totale milieukorting: €" + "%.2f", program.getCurrentQuotation().getTotalMilieuKorting());
+        System.out.println();
         System.out.printf("Prijs inclusief milieukorting: €" + "%.2f", program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting());
         System.out.println();
         System.out.println();
-        System.out.println("Toegepaste korting percentage: " + klant.getKlanttype().getKorting() + "%");
-        System.out.println("Toegepaste Korting : " + program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100));
+        System.out.printf("Toegepaste korting percentage: " + "%.0f%%", klant.getKlanttype().getKorting());
+        System.out.println();
+        System.out.printf("Toegepaste Korting : €" + "%.2f", program.getCurrentQuotation().getTotalPrice() * (klant.getKlanttype().getKorting() / 100));
         System.out.println();
         System.out.println();
         System.out.printf("Totale prijs: €" + "%.2f", (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) - (program.getCurrentQuotation().getTotalPrice() - program.getCurrentQuotation().getTotalMilieuKorting()) * (klant.getKlanttype().getKorting() / 100));
@@ -204,7 +207,7 @@ public class QuotationMenu extends Menu {
         int save = 2;
         while (save == 2) {
             System.out.println("Wilt u de offerte opslaan? ");
-            System.out.println("jaa / nee");
+            System.out.println("ja / nee");
 
             String answer = scanner.nextLine();
 
