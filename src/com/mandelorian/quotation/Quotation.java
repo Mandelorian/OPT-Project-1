@@ -34,7 +34,7 @@ public class Quotation {
     public Klant getKlant() { return klant;}
 
     public void setBoat(Boat boat) {this.boat = boat;}
-    public void addOption(Option option) {this.optionList.add(option);}
+    public void addOption(Option option) {if(option != null && !this.optionList.contains(option)) this.optionList.add(option);}
     public void removeOption(Option option) {this.optionList.remove(option);}
     public void removeOption(int index) {this.optionList.remove(index);}
 
@@ -49,11 +49,16 @@ public class Quotation {
         return  total;
     }
 
+    @Override
+    public String toString() {
+        return this.klant.getNaam() + " " + this.boat.getName();
+    }
+
 
     public String optionListAsString() {
         String s = "";
 
-        for (Option option : optionList) {
+        for (Option option : this.optionList) {
             s += (s == null || s.isBlank() || s.isEmpty()) ? s + option.getName() : s + "," + option.getName();
         }
 
@@ -155,8 +160,10 @@ public class Quotation {
                     quotation.addOption(Utility.getOptionByName(currentOption));
                 }
 
-                quotationList.add(quotation);
+                if(!quotationList.contains(quotation)) quotationList.add(quotation);
+                else System.out.println("Deze offerte is al geladen: " + quotation.getBoat().getName());
             });
+
 
 
         return quotationList;

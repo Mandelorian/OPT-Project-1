@@ -11,8 +11,8 @@ import com.mandelorian.quotation.Quotation;
 
 import java.util.*;
 
-public class OptionMenu extends Menu {
-    public OptionMenu(Program program) {
+public class QuotationMenu extends Menu {
+    public QuotationMenu(Program program) {
         super(program);
     }
 
@@ -31,7 +31,7 @@ public class OptionMenu extends Menu {
                     loadQoatations();
                     break;
                 case 3:
-                    printLoadedQuoations();
+                    Utility.printChoices("Geladen Offertes", program.getQuotationList());
                     break;
                 case 4:
                     editQuotation();
@@ -47,21 +47,7 @@ public class OptionMenu extends Menu {
                     break;
             }
     }
-    
-    // methodes voor de keuzes
-    public void printLoadedQuoations() {
-        System.out.println();
-        System.out.println("———————————————————————————————————————————————————");
-        System.out.println("                 Geladen Offertes                   ");
-        System.out.println("———————————————————————————————————————————————————");
 
-
-        for (int i = 0; i < program.getQuotationList().size(); i++) {
-            System.out.println((i + 1) + ". " + program.getQuotationList().get(i).getBoat().getName());
-        }
-
-        System.out.println("———————————————————————————————————————————————————");
-    }
 
     public void loadQoatations() {
         Scanner scanner = new Scanner(System.in);
@@ -261,7 +247,7 @@ public class OptionMenu extends Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println();
 
-        printLoadedQuoations();
+        Utility.printChoices("Geladen Offertes", program.getQuotationList());
 
         System.out.println();
 
@@ -427,7 +413,7 @@ public class OptionMenu extends Menu {
             return;
         }
 
-        printLoadedQuoations();
+        Utility.printChoices("Geladen Offertes", program.getQuotationList());
         System.out.println("Kies het nummer van de offerte die u wilt printen.");
 
         Scanner scanner = new Scanner(System.in);

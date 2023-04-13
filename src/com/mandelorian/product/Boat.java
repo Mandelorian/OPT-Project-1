@@ -30,8 +30,7 @@ public class Boat extends Product {
         return optionList;
     }
 
-    @Override
-    public String toString() {
+    public String getJSONString() {
 
         return   "  \n  {\n" +
                 "    \"name\": \"%name%\",".replace("%name%", this.getName()) + "\n" +
