@@ -97,7 +97,7 @@ public class ProductList {
                double price = optionObject.get("price").getAsDouble();
                String boatName = optionObject.get("boat").getAsString();
                String description = optionObject.get("description").getAsString();
-               double milieuKorting = optionObject.get("milieu korting").getAsDouble();
+               double milieuKorting = optionObject.get("milieuKorting").getAsDouble();
 
                optionList.add(new Option(name, price, description, milieuKorting, Utility.getBoatByName(boatName)));
            });
