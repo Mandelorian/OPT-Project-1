@@ -39,8 +39,7 @@ public class OptionMenu extends Menu {
                     selectQuotationToPrint();
                     break;
                 case 6:
-                    stopMenu();
-                    new MainMenu(program).chooseOption();
+                    Menu.openMenu(new MainMenu(program));
                     break;
                 case 7:
                     stopMenu();

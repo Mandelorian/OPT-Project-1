@@ -38,6 +38,7 @@ public class Option extends Product {
                 "    \"name\": \"%name%\",".replace("%name%", this.getName()) + "\n" +
                 "      \"price\": %price%,".replace("%price%", this.getPrice() + "") + "\n" +
                 "      \"boat\": \"%boat%\",".replace("%boat%", (this.getBoat() == null || this.getBoat().getName() == null) ? "" : this.getBoat().getName()) + "\n" +
+                "      \"milieuKorting\": \"%milieuKorting%\",".replace("%milieuKorting%", this.milieuKorting + "") + "\n" +
                 "      \"description\": \"%description%\"".replace("%description%", (this.getDescription() == null) ? "" : this.getDescription()) +
                 "\n  }";
     }
