@@ -8,11 +8,13 @@ import com.mandelorian.klant.KlantType;
 import com.mandelorian.product.Boat;
 import com.mandelorian.product.Option;
 import com.mandelorian.product.ProductList;
+import com.mandelorian.quotation.Quotation;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.Reader;
+import java.util.List;
 
 public class Utility {
 
@@ -64,6 +66,19 @@ public class Utility {
         return new Klant(companyName, email, city, klantType, postcode, name, street);
     }
 
+    public static void printChoices(String listName, List<?> objectList) {
+        System.out.println();
+        System.out.println("———————————————————————————————————————————————————");
+        System.out.println("                 " + listName + "                  ");
+        System.out.println("———————————————————————————————————————————————————");
+
+
+        for (int i = 0; i < objectList.size(); i++) {
+            System.out.println((i + 1) + ". " + objectList.get(i).toString());
+        }
+
+        System.out.println("———————————————————————————————————————————————————");
+    }
 
     public static void clearScreen() {
         for (int i = 0; i < 200; i++) {System.out.println();}
@@ -92,6 +107,7 @@ public class Utility {
 
         try (FileWriter writer = new FileWriter( filepath + "/" + fileName + ".json")) {
             writer.write(fileString);
+            writer.close();
             return true;
         } catch (Exception ex) {
             System.out.println("Kon het bestand " + fileName + " niet opslaan.");
@@ -105,7 +121,9 @@ public class Utility {
         if(fileName.contains(".")) fileName = fileName.split(".")[0];
 
         try (Reader reader = new FileReader(filepath + "/" + fileName + ".json")) {
-            return new Gson().fromJson(reader, JsonObject.class);
+            JsonObject jsonObject = new Gson().fromJson(reader, JsonObject.class);
+            reader.close();
+            return jsonObject;
         } catch (Exception ex) {
             System.out.println("Kon het bestand: " + fileName + " niet laden.");
             ex.printStackTrace();
