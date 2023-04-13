@@ -29,8 +29,7 @@ public class Option extends Product {
     public Boat getBoat() {return boat;}
     public void setBoat(Boat boat) {this.boat = boat;}
 
-    @Override
-    public String toString() {
+    public String getJSONString() {
 //        System.out.println(this.getName() + " " + this.getPrice() + " " + this.getBoat().getName() + " " + this.getDescription() );
 
 

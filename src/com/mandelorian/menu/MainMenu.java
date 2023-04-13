@@ -30,7 +30,7 @@ public class MainMenu extends Menu {
                     Menu.openMenu(new BoatMenu(program));
                     break;
                 case 3:
-                    Menu.openMenu(new OptionMenu(program));
+                    Menu.openMenu(new QuotationMenu(program));
                     break;
                 case 4:
                    stopMenu();

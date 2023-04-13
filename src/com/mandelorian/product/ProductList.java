@@ -201,7 +201,7 @@ public class ProductList {
        String fileString = "";
 
         for (Boat boat : boatList) {
-            fileString += (fileString.equalsIgnoreCase("")) ? boat.toString() : "," + boat.toString();
+            fileString += (fileString.equalsIgnoreCase("")) ? boat.getJSONString() : "," + boat.getJSONString();
         }
 
         return  "{" + "\n"
@@ -216,7 +216,7 @@ public class ProductList {
 
         for (Option option : optionList) {
 
-            fileString += (fileString.equalsIgnoreCase("")) ? option.toString() : "," + option.toString();
+            fileString += (fileString.equalsIgnoreCase("")) ? option.getJSONString() : "," + option.getJSONString();
         }
 
         return  "{" + "\n"
