@@ -6,6 +6,7 @@ out/
 .idea workspaces.xml
 .idea tasks.xml
 .saved/quotations
+.idea/misc.xml
 
 ### Eclipse ###
 .apt_generated
@@ -36,3 +37,4 @@ bin/
 .idea/shelf/Uncommitted_changes_before_Update_at_23-3-2023_14_55_\[Changes\]/shelved.patch
 *.xml
 *.patch
+.idea/misc.xml
