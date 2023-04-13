@@ -15,4 +15,9 @@ public class Product {
 
     public double getPrice() {return this.price;}
     public void setPrice(double price) {this.price = price;}
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
