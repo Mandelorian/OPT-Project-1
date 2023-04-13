@@ -1,0 +1,18 @@
+{
+ "quotations": [  
+  {
+    "name": "Cruise schip",
+      "boat": "Cruise schip",
+      "options": "Fitnessruimte",
+      "klant":   {
+        "name": "ffdfds",
+        "companyName": "fsdfsd",
+        "city": "fsd",
+        "klantType": "Overheid",
+        "postcode": "fds",
+        "email": "fsdf",
+        "street": "sdfsd"
+     }
+  }
+ ]
+}

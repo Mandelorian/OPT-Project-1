@@ -312,10 +312,12 @@ public class QuotationMenu extends Menu {
         System.out.println("               Optie lijst voor " + program.getCurrentQuotation().getBoat().getName() + "                   ");
         System.out.println("———————————————————————————————————————————————————");
 
-        for (int i = 0; i < ProductList.getOptionList().size(); i++) {
-            if (program.getCurrentQuotation().getBoat().equals(ProductList.getOptionList().get(i).getBoat()))
+        List<Option> avalibleOptions = program.getCurrentQuotation().getBoat().getAvalibleOptions();
 
-                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), ProductList.getOptionList().get(i).getName(), ProductList.getOptionList().get(i).getPrice());
+        for (int i = 0; i < avalibleOptions.size(); i++) {
+            if (program.getCurrentQuotation().getBoat().equals(avalibleOptions.get(i).getBoat()))
+
+                System.out.printf("%2d. %-25s: %.2f\n", (i + 1), avalibleOptions.get(i).getName(), avalibleOptions.get(i).getPrice());
 
         }
 
@@ -323,18 +325,14 @@ public class QuotationMenu extends Menu {
         optionNumber = scanner.nextInt();
         System.out.println();
 
-        if (optionNumber > ProductList.getOptionList().size()) {
+        if (optionNumber > avalibleOptions.size()) {
             System.out.println("De optie met dit nummer bestaat niet.");
             return;
         }
 
-        for (int i = 0; i < ProductList.getOptionList().size(); i++) {
-            if (program.getCurrentQuotation().getBoat().equals(ProductList.getOptionList().get(i).getBoat()))
-                if (optionNumber == (i + 1)) {
-                    program.getCurrentQuotation().addOption(ProductList.getOptionList().get(i));
-                    System.out.println("\"" + program.getCurrentQuotation().getOptionList().get(i).getName() + "\"" + " is toegevoegd aan de offerte.");
-                }
-        }
+        Option chosenOption = avalibleOptions.get(optionNumber -1);
+        program.getCurrentQuotation().addOption(chosenOption);
+        System.out.println("\"" + chosenOption.getName() + "\"" + " is toegevoegd aan de offerte.");
 
         System.out.println();
         System.out.println("Welk optie wilt u verwijderen");
@@ -350,13 +348,10 @@ public class QuotationMenu extends Menu {
             return;
         }
 
-        for (int i = 0; i < program.getCurrentQuotation().getOptionList().size(); i++) {
-            if (optionNumber == (i + 1)) {
-                System.out.println("\"" + program.getCurrentQuotation().getOptionList().get(i).getName() + "\"" + " is verwijderd van de offerte.");
-                program.getCurrentQuotation().removeOption(i);
-
-            }
-        }
+        avalibleOptions = program.getCurrentQuotation().getOptionList();
+        chosenOption = avalibleOptions.get(optionNumber - 1);
+        System.out.println("\"" + chosenOption.getName() + "\"" + " is verwijderd van de offerte.");
+        program.getCurrentQuotation().removeOption(chosenOption);
 
 
         printCurrentQuotationOption();
