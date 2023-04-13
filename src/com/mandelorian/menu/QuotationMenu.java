@@ -331,6 +331,7 @@ public class QuotationMenu extends Menu {
 
             System.out.print("Optie: ");
             optionNumber = scanner.nextInt();
+            scanner.nextLine();
             System.out.println();
 
             if (optionNumber > avalibleOptions.size()) {
@@ -345,9 +346,7 @@ public class QuotationMenu extends Menu {
         }
 
         System.out.println("Wilt u een optie verwijderen? (j/n)");
-        scanner.nextLine();
         optieJaNee = scanner.nextLine();
-
 
         if (optieJaNee.equals("j") || optieJaNee.equals("ja") || optieJaNee.equals("y") || optieJaNee.equals("yes") ||
                 optieJaNee.equals("J") || optieJaNee.equals("JA") || optieJaNee.equals("Ja")|| optieJaNee.equals("Y")   ||
@@ -359,6 +358,7 @@ public class QuotationMenu extends Menu {
 
             System.out.print("Optie: ");
             optionNumber = scanner.nextInt();
+            scanner.nextLine();
             System.out.println();
 
             chosenOption = avalibleOptions.get(optionNumber -1);
@@ -375,38 +375,43 @@ public class QuotationMenu extends Menu {
 
         }
 
-        printCurrentQuotationOption();
+        if (program.getCurrentQuotation().getOptionList().size() == 0) {
+            System.out.println("Er zijn geen opties om de prijs van te wijzigen.");
+        }
+        else {
 
-        System.out.println();
-        System.out.println("Welke prijs wil jij bewerken?Als u niet wilt bewerken druk op 0");
-        printCurrentQuotationOption();
+            System.out.println("Wilt u een optie prijs wijzigen? (j/n)");
+            optieJaNee = scanner.nextLine();
 
-        int bewerkOptie = scanner.nextInt();
+            if (optieJaNee.equals("j") || optieJaNee.equals("ja") || optieJaNee.equals("y") || optieJaNee.equals("yes") ||
+                    optieJaNee.equals("J") || optieJaNee.equals("JA") || optieJaNee.equals("Ja") || optieJaNee.equals("Y") ||
+                    optieJaNee.equals("YES") || optieJaNee.equals("Yes")) {
 
-        if (bewerkOptie!=0){
-            System.out.print("Optie: ");
-            optionNumber = scanner.nextInt();
-//        scanner.nextLine();
 
-            if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
-                System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
-                return;
-            }
+                System.out.println();
+                System.out.println("Welke prijs wil jij bewerken?");
+                printCurrentQuotationOption();
+                System.out.print("Optie: ");
+                optionNumber = scanner.nextInt();
+                scanner.nextLine();
 
-            System.out.print("Nieuwe prijs: ");
-            double newPrice = scanner.nextDouble();
-//        scanner.nextLine();
+                if (optionNumber > program.getCurrentQuotation().getOptionList().size()) {
+                    System.out.println("De optie met dit nummer zit niet in de huidige optie lijst.");
+                    return;
+                }
 
-            for (int i = 0; i < program.getCurrentQuotation().getOptionList().size(); i++) {
-                if (optionNumber == (i + 1)) {
-                    program.getCurrentQuotation().getOptionList().get(i).setPrice(newPrice);
-                    System.out.println("De prijs van \"" + program.getCurrentQuotation().getOptionList().get(i).getName() + "\"" + " is gewijzigd.");
+                System.out.print("Nieuwe prijs: ");
+                double newPrice = scanner.nextDouble();
+
+                for (int i = 0; i < program.getCurrentQuotation().getOptionList().size(); i++) {
+                    if (optionNumber == (i + 1)) {
+                        program.getCurrentQuotation().getOptionList().get(i).setPrice(newPrice);
+                        System.out.println("De prijs van \"" + program.getCurrentQuotation().getOptionList().get(i).getName() + "\"" + " is gewijzigd.");
+                    }
                 }
             }
+            printCurrentQuotationOption();
         }
-
-
-        printCurrentQuotationOption();
 
         program.getCurrentQuotation().saveQuoatation("./saved/quotations/", program.getCurrentQuotation().getKlant().getNaam());
     }
