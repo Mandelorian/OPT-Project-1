@@ -111,87 +111,87 @@ public class ProductList {
         optionList.add(new Option("Helikopterplatform", 1_500_000,null, Utility.getBoatByName("Jacht")));
         optionList.add(new Option("Sauna", 100_000,null, Utility.getBoatByName("Jacht")));
         optionList.add(new Option("Bioscoop", 350_000,null, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("Elektrische kookplaten", 20_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 10_000, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("Duurzame uitlaat filters", 5_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 2_500_000, Utility.getBoatByName("Jacht")));
-        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Elektrische kookplaten", 20_000,"Dit is een optie met milieukorting.", 10_000, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Duurzame uitlaat filters", 5_000_000,"Dit is een optie met milieukorting.", 2_500_000, Utility.getBoatByName("Jacht")));
+        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Jacht")));
 
         optionList.add(new Option("Zwembad", 10_000_000,null, Utility.getBoatByName("Cruise schip")));
         optionList.add(new Option("Spa", 35_000_000,null, Utility.getBoatByName("Cruise schip")));
         optionList.add(new Option("Theater", 4_000_000,null, Utility.getBoatByName("Cruise schip")));
         optionList.add(new Option("Casino", 68_000_000,null, Utility.getBoatByName("Cruise schip")));
         optionList.add(new Option("Fitnessruimte", 5_000_000,null, Utility.getBoatByName("Cruise schip")));
-        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Cruise schip")));
-        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Cruise schip")));
+        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Cruise schip")));
 
         optionList.add(new Option("Meer laadvermogen", 48_000_000,null, Utility.getBoatByName("Containerschip")));
         optionList.add(new Option("Meer container capaciteit", 80_000_000,null, Utility.getBoatByName("Containerschip")));
         optionList.add(new Option("Professioneel navigatieapparatuur", 4_800_000,null, Utility.getBoatByName("Containerschip")));
-        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Containerschip")));
-        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Containerschip")));
+        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Containerschip")));
 
         optionList.add(new Option("Extra tankcapaciteit", 40_000_000,null, Utility.getBoatByName("Tanker")));
         optionList.add(new Option("Meer laadpompen", 10_000_000,null, Utility.getBoatByName("Tanker")));
         optionList.add(new Option("Extra geavanceerd brandblusinstallatie", 4_000_000,null, Utility.getBoatByName("Tanker")));
-        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Tanker")));
-        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Tanker")));
+        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Tanker")));
 
         optionList.add(new Option("Meer passagierscapaciteit", 2_000_000,null, Utility.getBoatByName("Veerboot")));
         optionList.add(new Option("Auto- en vrachtcapaciteit", 3_000_000,null, Utility.getBoatByName("Veerboot")));
         optionList.add(new Option("Entertainment voorzieningen", 1_000_000,null, Utility.getBoatByName("Veerboot")));
-        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Veerboot")));
-        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 5_000_000, Utility.getBoatByName("Veerboot")));
+        optionList.add(new Option("Duurzame uitlaat filters", 10_000_000,"Dit is een optie met milieukorting.", 5_000_000, Utility.getBoatByName("Veerboot")));
+        optionList.add(new Option("Zonnepanelen", 10_000_000,"Dit is een optie met milieukortings.", 5_000_000, Utility.getBoatByName("Veerboot")));
 
         optionList.add(new Option("Krachtigere motor", 50_000,null, Utility.getBoatByName("Speedboot")));
         optionList.add(new Option("Audio systeem", 10_000,null, Utility.getBoatByName("Speedboot")));
         optionList.add(new Option("GPS-navigatie", 5000,null, Utility.getBoatByName("Speedboot")));
-        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 30_000, Utility.getBoatByName("Speedboot")));
-        optionList.add(new Option("Duurzamer/gerecycled rubber", 20_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 10_000, Utility.getBoatByName("Speedboot")));
+        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting.", 30_000, Utility.getBoatByName("Speedboot")));
+        optionList.add(new Option("Duurzamer/gerecycled rubber", 20_000,"Dit is een optie met milieukorting.", 10_000, Utility.getBoatByName("Speedboot")));
 
         optionList.add(new Option("Kraan", 50_000,null, Utility.getBoatByName("Vissersboot")));
         optionList.add(new Option("Navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Vissersboot")));
         optionList.add(new Option("Koelopslag", 30_000,null, Utility.getBoatByName("Vissersboot")));
-        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 30_000, Utility.getBoatByName("Vissersboot")));
-        optionList.add(new Option("Zonnepanelen", 100_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 50_000, Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting.", 30_000, Utility.getBoatByName("Vissersboot")));
+        optionList.add(new Option("Zonnepanelen", 100_000,"Dit is een optie met milieukorting.", 50_000, Utility.getBoatByName("Vissersboot")));
 
         optionList.add(new Option("Ligstoelen", 5000,null, Utility.getBoatByName("Pontonboot")));
         optionList.add(new Option("Tafels", 2000,null, Utility.getBoatByName("Pontonboot")));
         optionList.add(new Option("Audio systeem", 10_000,null, Utility.getBoatByName("Pontonboot")));
         optionList.add(new Option("Barbeque", 3000,null, Utility.getBoatByName("Pontonboot")));
-        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 30_000, Utility.getBoatByName("Pontonboot")));
-        optionList.add(new Option("Zonnepanelen", 100_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 50_000, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting.", 30_000, Utility.getBoatByName("Pontonboot")));
+        optionList.add(new Option("Zonnepanelen", 100_000,"Dit is een optie met milieukorting.", 50_000, Utility.getBoatByName("Pontonboot")));
 
         optionList.add(new Option("Sleephaken", 100_000,null, Utility.getBoatByName("Sleepboot")));
         optionList.add(new Option("Boegschroef", 50_000,null, Utility.getBoatByName("Sleepboot")));
         optionList.add(new Option("Navigatie-verlichting", 10_000,null, Utility.getBoatByName("Sleepboot")));
-        optionList.add(new Option("Zonnepanelen", 100_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 50_000, Utility.getBoatByName("Sleepboot")));
-        optionList.add(new Option("Duurzame uitlaatfilters", 400_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 250_000, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Zonnepanelen", 100_000,"Dit is een optie met milieukorting.", 50_000, Utility.getBoatByName("Sleepboot")));
+        optionList.add(new Option("Duurzame uitlaatfilters", 400_000,"Dit is een optie met milieukorting.", 250_000, Utility.getBoatByName("Sleepboot")));
 
         optionList.add(new Option("Keukenapparatuur", 50_000,null, Utility.getBoatByName("Motorjacht")));
         optionList.add(new Option("Airconditioning-motorjacht", 100_000,null, Utility.getBoatByName("Motorjacht")));
         optionList.add(new Option("Navigatie-apparatuur", 20_000,null, Utility.getBoatByName("Motorjacht")));
-        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 30_000, Utility.getBoatByName("Motorjacht")));
-        optionList.add(new Option("Elektrische kookplaat", 20_000,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 10_000, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Elektrische motor", 50_000,"Dit is een optie met milieukorting.", 30_000, Utility.getBoatByName("Motorjacht")));
+        optionList.add(new Option("Elektrische kookplaat", 20_000,"Dit is een optie met milieukorting.", 10_000, Utility.getBoatByName("Motorjacht")));
 
         optionList.add(new Option("Extra peddels kano", 50,null, Utility.getBoatByName("Kano")));
         optionList.add(new Option("Extra zitplaatsen kano", 20,null, Utility.getBoatByName("Kano")));
         optionList.add(new Option("Waterdichte opbergvakken kano", 10,null, Utility.getBoatByName("Kano")));
-        optionList.add(new Option("Duurzamer/gerecycled kunststof", 400,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 200, Utility.getBoatByName("Kano")));
+        optionList.add(new Option("Duurzamer/gerecycled kunststof", 400,"Dit is een optie met milieukorting.", 200, Utility.getBoatByName("Kano")));
 
         optionList.add(new Option("Extra peddels kayak", 50,null, Utility.getBoatByName("Kayak")));
         optionList.add(new Option("Extra zitplaatsen kayak", 20,null, Utility.getBoatByName("Kayak")));
         optionList.add(new Option("Waterdichte opbergvakken kayak", 10,null, Utility.getBoatByName("Kayak")));
-        optionList.add(new Option("Duurzamer/gerecycled kunststof", 400,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 200, Utility.getBoatByName("Kayak")));
+        optionList.add(new Option("Duurzamer/gerecycled kunststof", 400,"Dit is een optie met milieukorting.", 200, Utility.getBoatByName("Kayak")));
 
         optionList.add(new Option("Roer", 50,null, Utility.getBoatByName("Roeiboot")));
         optionList.add(new Option("Extra peddels", 50,null, Utility.getBoatByName("Roeiboot")));
         optionList.add(new Option("Extra zitplaatsen", 20,null, Utility.getBoatByName("Roeiboot")));
-        optionList.add(new Option("Duurzamer/gerecycled kunststof", 400,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 200, Utility.getBoatByName("Roeiboot")));
+        optionList.add(new Option("Duurzamer/gerecycled kunststof", 400,"Dit is een optie met milieukorting.", 200, Utility.getBoatByName("Roeiboot")));
 
         optionList.add(new Option("Extra zeilen", 500,null, Utility.getBoatByName("Zeilbootje")));
         optionList.add(new Option("Navigatie-verlichting", 100,null, Utility.getBoatByName("Zeilbootje")));
         optionList.add(new Option("Noodmotor", 1000,null, Utility.getBoatByName("Zeilbootje")));
-        optionList.add(new Option("Elektrische noodmotor", 800,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 500, Utility.getBoatByName("Zeilbootje")));
-        optionList.add(new Option("Zonnepanelen", 1500,"Dit is een optie met milieukorting en word afgetrokken van de totaal prijs.", 1000, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("Elektrische noodmotor", 800,"Dit is een optie met milieukorting.", 500, Utility.getBoatByName("Zeilbootje")));
+        optionList.add(new Option("Zonnepanelen", 1500,"Dit is een optie met milieukorting.", 1000, Utility.getBoatByName("Zeilbootje")));
         //opties voor jacht
         //optionList.add(new Option("Airconditioning", null, getBoatByName("Jacht")));
 
